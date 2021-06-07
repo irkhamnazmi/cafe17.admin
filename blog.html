@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <link rel="shortcut icon" type="image/png" href="images/cafe17.png" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <title>Cafe 17 - Purwokerto</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css"
+        rel="stylesheet" />
+
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700&display=swap" rel="stylesheet"> -->
+
+</head>
+
+<body id="body">
+
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end" style="background-color: black;" id="sidebar-wrapper">
+            <div class="sidebar-heading" style="background-color: black;"><img width="100%" src="images/cafe17_w.svg" />
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="beranda.html">Beranda</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="kasir.html">Kasir</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pelanggan.html">Pelanggan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="laporan.html">Laporan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transaksi.html">Transaksi</a>
+                </li>
+                <li class="nav-item" style="margin-top: 10%;">
+                    <a class="nav-link" href="#">Keluar</a>
+                </li>
+            </ul>
+
+            <ul class="nav flex-column text-center" style="margin-top: 100%;">
+                <li class="nav-item">
+                    <a class="nav-link" style="pointer-events: none;" href="#">© 2021 Cafe 17 Purwokerto</a>
+                </li>
+
+            </ul>
+
+
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <div class="container-fluid">
+                    <img id="logo" style="display: none;" width="50%" src="images/cafe17_w.svg" />
+                    <button class="btn btn-outline-light" id="sidebarToggle"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button> -->
+
+                    <div class="navbar-expand text-right" id="navbarNavDropdown">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="iconify" data-inline="false" data-icon="carbon:user-avatar"
+                                        style="font-size: 30px;"></span> Lorem Ipsum
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" style="pointer-events: none;" href="#">Admin</a>
+                                    <a class="dropdown-item" href="#">Logout</a>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container-fluid" style="margin-left: 5%; margin-right: 5%;">
+                <div class="row">
+                    <div class="col-4">
+                        <h1 class="mt-4" style="margin-bottom: 5%;">Blog</h1>
+                    </div>
+
+                </div>
+
+                <div class="row" style="padding-right:15%">
+                    <div class="col d-flex justify-content-end">
+
+                        <div class="card" style=" width:18rem; color: black; border-radius: 10px;">
+                            <div class="card-body">
+                                <form>
+                                    <span class="iconify" data-inline="false" data-icon="zmdi:search"
+                                        style="font-size: 24px;"></span>
+                                    <input type="text" placeholder="Cari"
+                                        style="outline: none;  border-color: transparent;" />
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <button class="btn btn-lg btn-success" type="button"
+                            style="margin-left: 2%; border-radius: 10px;" data-toggle="modal"
+                            data-target="#formModal"><i class="bi bi-plus"></i> Buat
+                            Baru</button>
+                    </div>
+                    <div style="overflow-x:auto;">
+                        <table class="table table-bordered">
+                            <thead style=" border: 1px solid #ddd;">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Tanggal</th>
+                                    <th scope="col">Judul</th>
+                                    <th scope="col">Penulis</th>
+                                    <th scope="col">Deskripsi</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Dialog -->
+    <div class="modal fade" id="formModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-xl" style="width: 30%; " role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-body" style="padding-right: 10%; padding-left: 10%;">
+
+                    <form method="POST">
+                        <div class="row">
+
+                            <div class="col" style="border: solid;">
+
+                                <div class="row">
+
+                                    <div class="col" style="line-height: 2.8;">
+                                        <!-- <label>Tanggal</label>
+                                        <input type="text" class="form-control" data-date-format="dd/mm/yyyy"
+                                            id="datepicker"> -->
+
+                                        <label>Judul</label>
+                                        <input type="text" class="form-control">
+
+                                        <label>Penulis</label>
+                                        <input type="text" class="form-control">
+
+                                        <label id="img">Foto</label>
+                                        <input type="file" id="img" class="form-control" accept="image/*">
+
+
+                                        <label>Deskripsi</label>
+                                        <div id="editor">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                  
+                    <div class="modal-footer justify-content-center">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="button" class="btn btn-lg btn-success">Buat</button>
+                    </div>
+                </form>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+
+        <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js">
+        </script>
+        <script src="js/main.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="//cdn.ckeditor.com/4.16.1/basic/ckeditor.js"></script>
+        <script>
+            CKEDITOR.replace('editor');
+        </script>
+</body>
+
+</html>

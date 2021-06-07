@@ -1,0 +1,327 @@
+@font-face {
+    font-family: robotoRegular;
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: robotoMedium;
+    src: url('../fonts/Roboto-Medium.ttf');
+}
+
+@font-face {
+    font-family: poppinsRegular;
+    src: url('../fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: poppinsLight;
+    src: url('../fonts/Poppins-Light.ttf');
+}
+
+@font-face {
+    font-family: poppinsMedium;
+    src: url('../fonts/Poppins-Medium.ttf');
+}
+
+@font-face {
+    font-family: poppinsBold;
+    src: url('../fonts/Poppins-Bold.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    height: 100%;
+}
+body{
+    padding-bottom: 58px;
+    min-height: 100vh;
+    
+}
+
+aside{
+    background-color: black;
+}
+
+label{
+    font-family: poppinsRegular;
+}
+
+main{
+  
+    margin-bottom: 20%;
+    padding: 50px 0px;
+
+}
+
+  footer {
+    clear: both;
+    position: relative;
+    width: 100%;
+    margin-top: -100px;
+   
+}
+
+.btn-primary {
+    /* background: #FF9900; */
+    background-color: black;
+    /* border: 0; */
+    padding: 15px 40px 15px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    font-family: poppinsRegular;
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-danger:hover, .btn-success:hover {
+    background: rgb(219, 133, 4);
+    border: 0;
+}
+
+.btn-secondary {
+    background: none;
+    border: 1px solid #BCD0E5;
+    padding: 15px 40px 15px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #173A56;
+    border-radius: 10px;
+}
+
+
+
+.btn-success {
+    /* background: #FF9900; */
+    background-color: green;
+    /* border: 0; */
+    padding: 15px 40px 15px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    font-family: poppinsRegular;
+}
+
+
+
+.btn-danger {
+    /* background: #FF9900; */
+    background-color: red;
+    /* border: 0; */
+    padding: 15px 40px 15px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    font-family: poppinsRegular;
+}
+
+
+
+
+h1 {
+    font-family: poppinsBold;
+    font-weight: 700;
+   
+   
+}
+
+h2 {
+    font-family: poppinsMedium;
+    font-weight: 700;
+    
+   
+}
+
+h3, p {
+    font-family: poppinsRegular;
+    font-weight: 700;
+  
+   
+}
+
+
+.herobwa-black h1  {
+    font-family: poppinsBold;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+
+.herobwa p {
+    font-family: poppinsMedium;
+    font-weight: 400;
+    color: #2F281E;
+
+}
+
+
+
+.nav .nav-item .nav-link{
+    color: white;
+    font-family: poppinsRegular;
+}
+
+
+.nav .nav-item .nav-link:hover,
+.nav .nav-item.active .nav-link:hover {
+    color: black;
+    font-family: poppinsMedium;
+    background-color: white;
+
+}
+
+
+
+.nav .nav-item.active .nav-link {
+    color: white;
+    font-family: poppinsMedium;
+    text-decoration: underline;
+
+}
+
+.iconify {
+    font-size: 24px;
+
+}
+
+
+
+.herobwa-black {
+
+    background-color: #000;
+    color: white;
+    padding: 50px;
+   
+
+}
+
+.herobwa-white {
+
+    background-color: #fff;
+    color: black;
+    padding: 20px;
+
+}
+
+.link {
+    color: white;
+}
+
+.link-b{
+    color: black;
+}
+
+
+
+
+.image {
+    position: relative;
+    width: 150px;
+    height: 150px;
+
+}
+
+.carousel-indicators {
+    margin-top: 5px;
+    position: relative;
+}
+
+
+.carousel-indicators li {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #000;
+    position: relative;
+}
+
+.scrolling-wrapper{
+	overflow-x: auto;
+}
+
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+
+
+  .modal-title{
+    font-family: poppinsMedium;
+    font-weight: 700;
+    color: black;
+    text-align: center;
+  }
+
+.card{
+    color: white;
+}
+ 
+.col{
+    margin-bottom: 5%;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    width: 50rem;
+  }
+ 
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #EBFBFF}
+  
+
+
+  .form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+
+
+
+.datepicker {
+    font-size: 0.875em;
+}
+/* solution 2: the original datepicker use 20px so replace with the following:*/
+
+.datepicker td, .datepicker th {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .btn-primary,
+    .btn-success,
+    .btn-secondary {
+        margin-top: 10px;
+        margin-left: 0 !important;
+    }
+
+
+
+    
+
+}
+
+
+
+    
+
