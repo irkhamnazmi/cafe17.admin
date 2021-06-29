@@ -1,7 +1,7 @@
 <?php
 class App
 {
-    protected $controller = 'Beranda';
+    protected $controller = 'Login';
     protected $method = 'index';
     protected $params = [];
 
@@ -14,7 +14,7 @@ class App
 
         // controller
         if (file_exists('../app/controllers/' . ucfirst($url[0]) . '.php')) {
-            $this->controller = $url[0];
+            $this->controller = ucfirst($url[0]);
             unset($url[0]);
         }
         require_once '../app/controllers/' . $this->controller . '.php';
@@ -30,12 +30,10 @@ class App
         //params
         if (!empty($url)) {
             $this->params = array_values($url);
-           
         }
 
         //jalankan controller & method, serta kirimkan params jika ada 
         call_user_func_array([$this->controller, $this->method], $this->params);
-
     }
 
     public function parseURL()
