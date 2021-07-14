@@ -2,11 +2,17 @@
 
 class Report extends Controller{
     public $page_name = 'report';
+
+ 
+
     public function index(){
-        // echo 'home/index';
-        $data['judul'] = $this->model('User_model')->getTitle();
-        $data['page'] = $this->page_name;
-        // $data['email'] = $this->model('User_model')->getEmail;
+      
+       
+        $data = [
+            'judul' => $this->model('Asset_model')->getTitle(),
+            'page' => $this->page_name
+        ];
+     
         $this->view('template/header', $data);
         $this->view('template/sidebar', $data);
         $this->view('template/navbar', $data);

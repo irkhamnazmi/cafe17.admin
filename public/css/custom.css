@@ -306,6 +306,9 @@ table {
     height: 1.5em;
 }
 
+
+
+
 @media only screen and (max-width: 768px) {
 
     .btn-primary,
@@ -313,11 +316,7 @@ table {
     .btn-secondary {
         margin-top: 10px;
         margin-left: 0 !important;
-    }
-
-
-
-    
+    }    
 
 }
 

@@ -1,14 +1,9 @@
-
-
-
-
-  $('#formModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    modal = $(this)
-   
-    //  modal.find('.modal-title').text(recipient)
-})
+//   $('#formModal').on('show.bs.modal', function (event) {
+//     var button = $(event.relatedTarget) // Button that triggered the modal
+//     var recipient = button.data('whatever') // Extract info from data-* attributes
+//     modal = $(this)
+//     //  modal.find('.modal-title').text(recipient)
+// })
 
 
 $(document).ready(function () {
@@ -51,5 +46,11 @@ $('#datepicker').datepicker("setDate", new Date());
 
 
 
-
-
+function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}

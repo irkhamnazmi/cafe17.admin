@@ -17,11 +17,12 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="iconify" data-inline="false" data-icon="carbon:user-avatar" style="font-size: 30px;"></span> Lorem Ipsum
+                                    <span class="iconify" data-inline="false" data-icon="carbon:user-avatar" style="font-size: 30px;"></span>
+                                    <?= $_SESSION['cashier_name']; ?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" style="pointer-events: none;" href="#">Admin</a>
-                                    <a class="dropdown-item" href="#">Logout</a>
+                                    <a class="dropdown-item" style="pointer-events: none;" href="#"><?= $_SESSION['cashier_type'];?></a>
+                                    <a class="dropdown-item" href="<?= BASEURL; ?>/account/logout">Logout</a>
 
                                 </div>
                             </li>

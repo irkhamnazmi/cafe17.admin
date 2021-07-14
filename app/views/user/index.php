@@ -42,41 +42,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                               
+                            <?php
+                            $no = 1;
+                            foreach ($data['row'] as $row) :
+                            ?>
+                               <tr>
+                                   <th scope="row"><?= $no; ?></th>
+                                   <td><?= $row['user_date']; ?></td>
+                                   <td><?= $row['user_name']; ?></td>
+                                   <td><?= $row['user_email']; ?></td>
+                                   <td><?= $row['user_phone_number']; ?></td>
+                                   <td><?= $row['user_address']; ?></td>
+                                   <td><?= $row['user_password']; ?></td>
+                                   <td></td>
+                               </tr>
 
-                                </tr>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                               
-
-                                </tr>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                </tr>
+                           <?php
+                                $no++;
+                            endforeach;
+                            ?>
 
 
                             </tbody>

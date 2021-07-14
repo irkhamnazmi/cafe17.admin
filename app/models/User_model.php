@@ -1,44 +1,20 @@
 <?php 
 
-class User_model{
-    private $title = 'Cafe 17 - Purwokerto';
-    private $email;
+class User_model {
+    private $table = 'm_user';
+    private $db;
 
-
-     /**
-     * Get the value of title
-     */ 
-
-
-
-    /**
-     * Get the value of email
-     */ 
-    public function getEmail()
+    public function __construct()
     {
-        return $this->email;
+        $this->db = new Database;
     }
 
-    /**
-     * Set the value of email
-     *
-     * @return  self
-     */ 
-    public function setEmail($email)
+    public function getAllRow()
     {
-        $this->email = $email;
-
-        return $this;
+        $this->db->query('SELECT * FROM ' . $this->table);
+        return $this->db->resultSet();
     }
 
 
-    /**
-     * Get the value of title
-     */ 
-    public function getTitle()
-    {
-        return $this->title;
-    }
+
 }
-
-?>

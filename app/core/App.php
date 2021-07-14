@@ -1,7 +1,8 @@
 <?php
 class App
-{
-    protected $controller = 'Login';
+{   
+
+    protected $controller = 'Dashboard';
     protected $method = 'index';
     protected $params = [];
 
@@ -45,4 +46,6 @@ class App
             return $url;
         }
     }
+
+   
 }
