@@ -10,7 +10,7 @@ define('DB_NAME','db_cafe17');
 
 
 //host
-define('BASEDIRECTORY', '/cafe17_admin/public');
+define('BASEDIRECTORY', '/cafe17.admin/public');
 define('BASEURL', 'http://'.DB_HOST.BASEDIRECTORY);
 
 
