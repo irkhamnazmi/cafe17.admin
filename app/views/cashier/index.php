@@ -1,6 +1,6 @@
        <!-- Page content-->
        <div class="container-fluid" style="margin-left: 5%; margin-right: 5%;">
-     
+
            <div class="row">
                <div class="col-4">
                    <h1 class="mt-4" style="margin-bottom: 5%;">Kasir</h1>
@@ -20,21 +20,14 @@
            <div class="row" style="padding-right:15%">
                <div class="col d-flex justify-content-end">
 
-                   <div class="card" style=" width:18rem; color: black; border-radius: 10px;">
-                       <div class="card-body">
-                           <form>
-                               <span class="iconify" data-inline="false" data-icon="zmdi:search" style="font-size: 24px;"></span>
-                               <input type="text" placeholder="Cari" style="outline: none;  border-color: transparent;" />
-                           </form>
-
-                       </div>
-                   </div>
-
                    <button class="btn btn-lg btn-success addCashier" type="button" style="margin-left: 2%; border-radius: 10px;" data-toggle="modal" data-target="#formModal"><i class="bi bi-plus"></i> Tambah
                        Kasir</button>
                </div>
                <div style="overflow-x:auto;">
-                   <table class="table table-bordered">
+                   <table class="table table-bordered" id="dataTable">
+
+
+
                        <thead style=" border: 1px solid #ddd;">
                            <tr>
                                <th scope="col">#</th>
@@ -43,7 +36,6 @@
                                <th scope="col">Jenis</th>
                                <th scope="col">Email</th>
                                <th scope="col">No Hp</th>
-                               <!-- <th scope="col">Sandi</th> -->
                                <th scope="col">Aksi</th>
                            </tr>
                        </thead>
@@ -57,11 +49,12 @@
                                        <th scope="row"><?= $no; ?></th>
                                        <td><?= $row['cashier_date']; ?></td>
                                        <td><?= $row['cashier_name']; ?></td>
-                                       <td><?= $row['cashier_type']; ?></td>
+                                       <td><?= $row['cashier_category']; ?></td>
                                        <td><?= $row['cashier_email']; ?></td>
                                        <td><?= $row['cashier_phone_number']; ?></td>
                                        <!-- <td ><input class="border-0" type="password" value="<?= $row['cashier_password']; ?>"/></td> -->
-                                       <td>  <div class="dropdown">
+                                       <td>
+                                           <div class="dropdown">
                                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                    Select
                                                </a>
@@ -69,10 +62,10 @@
                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                    <a class="dropdown-item" href="<?= BASEURL; ?>/cashier/delete/<?= $row['cashier_id']; ?>" onclick="return confirm('yakin data <?= $row['cashier_name']; ?>?')">hapus</a>
                                                    <a class="dropdown-item editCashier" href="<?= BASEURL; ?>/cashier/edit/<?= $row['cashier_id']; ?>" data-toggle="modal" data-target="#formModal" data-id="<?= $row['cashier_id']; ?>">ubah</a>
-                                                   
+
                                                </div>
                                            </div>
-                                        </td>
+                                       </td>
                                    </tr>
 
                                <?php
@@ -81,8 +74,7 @@
                             } else {
                                 ?>
                                <tr>
-                                   <th class="text-center" colspan="6">--Tidak Ada Data-</th>
-
+                                   <th class="text-center" colspan="6">--Tidak Ada Data--</th>
 
                                </tr>
                            <?php
@@ -93,6 +85,8 @@
 
                        </tbody>
                    </table>
+
+
                </div>
 
            </div>
@@ -113,62 +107,60 @@
                        </button>
                    </div>
                    <div class="modal-body">
-                       <form action="<?= BASEURL; ?>/cashier/add" method="post">
+                       <form id="form" class="needs-validation" novalidate action="<?= BASEURL; ?>/cashier/add" method="post">
+                           <span id="ckeditor" style="display: none;">unavailable</span>
                            <input type="hidden" name="cashier_id" id="cashier_id" />
                            <div class="form-group">
                                <label for="cashier_name">Nama Kasir</label>
-                               <input type="text" class="form-control" id="cashier_name" name="cashier_name">
+                               <input type="text" class="form-control" id="cashier_name" name="cashier_name" required>
+                               <div class="invalid-feedback">
+                                   Diisi dengan Nama Lengkap Member
+                               </div>
                            </div>
 
                            <div class="form-group">
                                <label for="cashier_address">Alamat</label>
-                               <textarea type="text" class="form-control" id="cashier_address" name="cashier_address"></textarea>
+                               <textarea type="text" class="form-control" id="cashier_address" name="cashier_address" required></textarea>
+                               <div class="invalid-feedback">
+                                   Jelaskan Alamat Rumah member
+                               </div>
                            </div>
 
                            <div class="form-group">
-                               <label for="cashier_type">Jenis</label>
-                               <select class="form-control" id="cashier_type" name="cashier_type">
+                               <label for="cashier_category">Kategori</label>
+                               <select class="form-control" id="cashier_category" name="cashier_category">
                                    <option value="Admin">Admin</option>
-                                   <option value="Cashier">Kasir</option>
+                                   <option value="Kasir">Kasir</option>
                                </select>
                            </div>
 
                            <div class="form-group">
                                <label for="cashier_email">Email</label>
-                               <input type="text" class="form-control" id="cashier_email" name="cashier_email">
+                               <input type="email" class="form-control" id="cashier_email" name="cashier_email" required>
+                               <div class="invalid-feedback">
+                                   Isi email valid yang member miliki
+                               </div>
                            </div>
 
                            <div class="form-group">
                                <label for="cashier_phone_number">Nomor HP</label>
-                               <input type="text" class="form-control" id="cashier_phone_number" name="cashier_phone_number">
+                               <input type="text" class="form-control" id="cashier_phone_number" name="cashier_phone_number" required>
+                               <div class="invalid-feedback">
+                                   Isi Nomor Hp aktif Member yang bisa dihubungi dengan WhatsApp
+                               </div>
                            </div>
 
                            <div class="form-group">
                                <label for="password">Sandi</label>
-                               <input type="password" class="form-control" id="password" name="cashier_password">
-                               <input type="checkbox" onclick="myFunction()"> Tampilkan Sandi 
+                               <input type="password" class="form-control" id="password" name="cashier_password" required>
+                               <input type="checkbox" onclick="myFunction()"> Tampilkan Sandi
+                               <div class="invalid-feedback">
+                                   Harap disi password untuk member
+                               </div>
                            </div>
 
 
-                           <!-- <div class="form-group">
-                          <label for="menu_image">Foto</label>
-                          <input type="file" class="form-control" id="menu_image" name="menu_image">
-                      </div> -->
-
-
-
-                           <!-- <div class="form-group">
-                        <label for="jurusan">Jurusan</label>
-                        <select class="form-control" id="jurusan" name="jurusan">
-                            <option value="Teknik Informatika">Teknik Informatika</option>
-                            <option value="Teknik Industri">Teknik Industri</option>
-                            <option value="Teknologi Pangan">Teknologi Pangan</option>
-                            <option value="Teknik Planologi">Teknik Planologi</option>
-                            <option value="Teknik Lingkungan">Teknik Lingkungan</option>
-
-                        </select>
-                    </div> -->
-
+                    
                    </div>
                    <div class="modal-footer">
                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

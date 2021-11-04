@@ -12,9 +12,6 @@ class Cashier extends Controller{
 
         ];
        
-    
-       
-       
         $this->view('template/header', $data);
         $this->view('template/sidebar', $data);
         $this->view('template/navbar', $data);
@@ -70,26 +67,22 @@ class Cashier extends Controller{
 
 
 
-    public function search(){
+    // public function search(){
        
-        
+    //     echo json_encode($this->model('Cashier_model')->getRowKeyword($_POST['cashier_id']));
 
-        $data = [
-            'judul' => $this->model('Asset_model')->getTitle(),
-            'page' => $this->page_name,
-            'row' => $this->model('Cashier_model')->getRowByKeyword()
+    //     // $data = [
+    //     //     'judul' => $this->model('Asset_model')->getTitle(),
+    //     //     'page' => $this->page_name,
+    //     //     'row' => $this->model('Cashier_model')->getRowByKeyword()
 
-        ];
-       
-    
-       
-       
-        $this->view('template/header', $data);
-        $this->view('template/sidebar', $data);
-        $this->view('template/navbar', $data);
-        $this->view('cashier/index',$data);
-        $this->view('template/footer');
-    }
+    //     // ];
+    //     // $this->view('template/header', $data);
+    //     // $this->view('template/sidebar', $data);
+    //     // $this->view('template/navbar', $data);
+    //     // $this->view('cashier/index',$data);
+    //     // $this->view('template/footer');
+    // }
 
 }
 

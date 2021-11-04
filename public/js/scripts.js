@@ -34,3 +34,5 @@ if (document.body.getElementsByClassName('sb-sidenav-toggled') == true) {
 }else{
         document.getElementById("logo").style.display="none";
 }
+
+

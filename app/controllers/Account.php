@@ -3,15 +3,16 @@
 class Account extends Controller{
     public function index(){
         // echo 'home/index';
+      
 
-        if(!isset($_SESSION['cashier_id'])){
+        if(empty($_SESSION['cashier'])){
             $data['judul'] = $this->model('Asset_model')->getTitle();
             $this->view('template/header_login', $data);
             $this->view('account/index');
             $this->view('template/footer_login');
         } else{
-            header('Location: ' . BASEURL . '/dashboard');
-          
+           
+            echo '<script type="text/javascript"> location.replace("'. BASEURL .'/dashboard")</script>';
         }   
 
       
@@ -19,7 +20,7 @@ class Account extends Controller{
 
     public function getlogin()
     {
-        // var_dump($_POST);
+       
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $data = [
             'email' => trim($_POST['email']),
@@ -50,8 +51,9 @@ class Account extends Controller{
             if ($loginUser) {
                 $this->CreateSession($loginUser);
                 // Flasher::setFlash($loginUser['email'], 'login', 'success');
-                // header('Location: ' . BASEURL . '/dashboard');
-                // exit;
+               
+                
+                
                
             } else {
                 $data['passError'] = 'Email atau Sandi tidak valid';
@@ -67,19 +69,24 @@ class Account extends Controller{
     public function CreateSession($user)
     {
        
-        $_SESSION['cashier_id'] = $user['cashier_id'];
-        $_SESSION['cashier_name'] = $user['cashier_name'];
-        $_SESSION['cashier_type'] = $user['cashier_type'];
-        header('Location: ' . BASEURL . '/dashboard');
+        $_SESSION['cashier'] = [
+            'id' => $user['cashier_id'],
+            'name' => $user['cashier_name'],
+            'category' => $user['cashier_category']
+
+        ];
+        
+         header('Location: ' . BASEURL . '/dashboard');
+         exit;
+       
     }
 
     public function logout()
     {
-       
-        unset($_SESSION['cashier_id']);
-        unset($_SESSION['cashier_name']);
-        unset($_SESSION['cashier_type']);
-        header('Location: ' . BASEURL . '/account');
+     
+        unset($_SESSION['cashier']);
+        echo '<script type="text/javascript"> location.replace("'. BASEURL .'")</script>';
+        exit;
        
         
     }

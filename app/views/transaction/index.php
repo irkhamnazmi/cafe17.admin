@@ -10,7 +10,7 @@
                <div class="row" style="padding-right:15%">
                    <div class="col d-flex justify-content-end">
 
-                       <div class="card" style=" width:18rem; color: black; border-radius: 10px;">
+                       <!-- <div class="card" style=" width:18rem; color: black; border-radius: 10px;">
                            <div class="card-body">
                                <form>
                                    <span class="iconify" data-inline="false" data-icon="zmdi:search" style="font-size: 24px;"></span>
@@ -18,7 +18,7 @@
                                </form>
 
                            </div>
-                       </div>
+                       </div> -->
 
                        <!-- <button class="btn btn-lg btn-success" type="button"
                             style="margin-left: 2%; border-radius: 10px;" data-toggle="modal"
@@ -26,7 +26,7 @@
                             Baru</button> -->
                    </div>
                    <div style="overflow-x:auto;">
-                       <table class="table table-bordered">
+                       <table class="table table-bordered" id="dataTable">
                            <thead style=" border: 1px solid #ddd;">
                                <tr>
                                    <th scope="col">#</th>
@@ -39,23 +39,31 @@
                            </thead>
                            <tbody>
                                <?php
-                                $no = 1;
-                                foreach ($data['row'] as $row) :
+                                if (!empty($data['row'])) {
+                                    $no = 1;
+                                    foreach ($data['row'] as $row) :
                                 ?>
+                                       <tr>
+                                           <th scope="row"><?= $no; ?></th>
+                                           <td><?= $row['transaction_date']; ?></td>
+                                           <td><?= $row['transaction_invoice_code']; ?></td>
+                                           <td><?= $row['user_name']; ?></td>
+                                           <td><?= $row['transaction_phone_number']; ?></td>
+                                           <td></td>
+                                       </tr>
+
+                                   <?php
+                                        $no++;
+                                    endforeach;
+                                } else {
+                                    ?>
                                    <tr>
-                                       <th scope="row"><?= $no; ?></th>
-                                       <td><?= $row['transaction_date']; ?></td>
-                                       <td><?= $row['transaction_invoice_code']; ?></td>
-                                       <td><?= $row['user_name']; ?></td>
-                                       <td><?= $row['transaction_phone_number']; ?></td>
-                                       <td></td>
+                                       <th class="text-center" colspan="6">--Tidak Ada Data--</th>
+
                                    </tr>
-
                                <?php
-                                    $no++;
-                                endforeach;
+                                }
                                 ?>
-
                            </tbody>
                        </table>
                    </div>
@@ -113,10 +121,6 @@
                                        </div>
 
                                    </div>
-
-
-
-
 
                                </div>
                                <div class="modal-footer justify-content-center">

@@ -13,19 +13,27 @@
                
             ];
 
-            // $data['judul'] = $this->model('Asset_model')->getTitle();
-            // $data['page'] = $this->page_name;
+           
 
-            if(isset($_SESSION['cashier_id'])){
                 $this->view('template/header', $data);
                 $this->view('template/sidebar', $data);
                 $this->view('template/navbar', $data);
                 $this->view('dashboard/index',$data);
                 $this->view('template/footer');
-            } else{
-                header('Location: ' . BASEURL . '/account');
-              
-            }   
+
+
+             // $data['judul'] = $this->model('Asset_model')->getTitle();
+            // $data['page'] = $this->page_name;
+            // if(!empty($_SESSION['cashier'])){
+            //     $this->view('template/header', $data);
+            //     $this->view('template/sidebar', $data);
+            //     $this->view('template/navbar', $data);
+            //     $this->view('dashboard/index',$data);
+            //     $this->view('template/footer');
+            // } else{
+            //     header('Location: ' . BASEURL . '/account');
+            //     exit;
+            // }   
           
          }
 

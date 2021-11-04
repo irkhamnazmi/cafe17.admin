@@ -11,7 +11,7 @@ class Database{
 
     public function __construct()
     {
-        //data source name identitas server
+        //Koneksi ke server
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->db_name;
 
         $option = [

@@ -1,6 +1,6 @@
 ﻿/**
- * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or https://ckeditor.com/license
+ * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
 /**
@@ -10,13 +10,13 @@
  * If you would like to build CKEditor online again
  * (for example to upgrade), visit one the following links:
  *
- * (1) https://ckeditor.com/cke4/builder
+ * (1) http://ckeditor.com/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) https://ckeditor.com/cke4/builder/2b03e0d9fea56c888b82da0c1f8e1151
+ * (2) http://ckeditor.com/builder/4aba02dba236509dfcd82016a077431e
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) https://ckeditor.com/cke4/builder/download/2b03e0d9fea56c888b82da0c1f8e1151
+ * (3) http://ckeditor.com/builder/download/4aba02dba236509dfcd82016a077431e
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -26,7 +26,7 @@
 
 var CKBUILDER_CONFIG = {
 	skin: 'moono-lisa',
-	preset: 'basic',
+	preset: 'standard',
 	ignore: [
 		'.DS_Store',
 		'.bender',
@@ -38,33 +38,53 @@ var CKBUILDER_CONFIG = {
 		'.jshintignore',
 		'.jshintrc',
 		'.mailmap',
-		'.npm',
-		'.nvmrc',
-		'.travis.yml',
 		'bender-err.log',
 		'bender-out.log',
-		'bender.ci.js',
 		'bender.js',
 		'dev',
 		'gruntfile.js',
 		'less',
 		'node_modules',
-		'package-lock.json',
 		'package.json',
 		'tests'
 	],
 	plugins : {
+		'a11yhelp' : 1,
 		'about' : 1,
 		'basicstyles' : 1,
+		'blockquote' : 1,
 		'clipboard' : 1,
+		'contextmenu' : 1,
+		'elementspath' : 1,
 		'enterkey' : 1,
 		'entities' : 1,
+		'filebrowser' : 1,
 		'floatingspace' : 1,
+		'format' : 1,
+		'horizontalrule' : 1,
+		'htmlwriter' : 1,
+		'image' : 1,
 		'indentlist' : 1,
 		'link' : 1,
 		'list' : 1,
+		'magicline' : 1,
+		'maximize' : 1,
+		'pastefromword' : 1,
+		'pastetext' : 1,
+		'removeformat' : 1,
+		'resize' : 1,
+		'scayt' : 1,
+		'showborders' : 1,
+		'sourcearea' : 1,
+		'specialchar' : 1,
+		'stylescombo' : 1,
+		'tab' : 1,
+		'table' : 1,
+		'tableselection' : 1,
+		'tabletools' : 1,
 		'toolbar' : 1,
 		'undo' : 1,
+		'wsc' : 1,
 		'wysiwygarea' : 1
 	},
 	languages : {
@@ -87,7 +107,6 @@ var CKBUILDER_CONFIG = {
 		'en-gb' : 1,
 		'eo' : 1,
 		'es' : 1,
-		'es-mx' : 1,
 		'et' : 1,
 		'eu' : 1,
 		'fa' : 1,

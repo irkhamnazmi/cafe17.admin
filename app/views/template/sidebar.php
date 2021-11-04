@@ -3,7 +3,10 @@
         <div class="border-end mr-5" style="background-color: black;" id="sidebar-wrapper">
             <div class="sidebar-heading" style="background-color: black;"><img width="250" src="<?= BASEURL;?>/images/cafe_17.png"/></div>
             <ul class="nav flex-column">
-            <?php if($_SESSION['cashier_type'] == "Admin"):?>
+            <?php if(empty($_SESSION['cashier'])){
+                   header('Location: ' .BASEURL.'/account');
+            } else{
+                if($_SESSION['cashier']['category'] == "Admin"):?>
                 <li class="nav-item <?= $v = ('dashboard' == $data['page']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="<?= BASEURL;?>/dashboard">Beranda</a>
                 </li>
@@ -20,7 +23,7 @@
                     <a class="nav-link" href="<?= BASEURL;?>/user">Pelanggan</a>
                 </li>
 
-                <?php endif;?>
+                <?php endif;}?>
 
                 <li class="nav-item <?= $v = ('report' == $data['page']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="<?= BASEURL;?>/report">Laporan</a>

@@ -9,7 +9,7 @@
 
                 <div class="row" style="padding-right:15%">
                     <div class="col d-flex justify-content-end">
-
+<!-- 
                         <div class="card" style=" width:18rem; color: black; border-radius: 10px;">
                             <div class="card-body">
                                 <form>
@@ -20,7 +20,7 @@
                                 </form>
 
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- <button class="btn btn-lg btn-success" type="button"
                             style="margin-left: 2%; border-radius: 10px;" data-toggle="modal"
@@ -28,7 +28,7 @@
                             Baru</button> -->
                     </div>
                     <div style="overflow-x:auto;">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="dataTable">
                             <thead style=" border: 1px solid #ddd;">
                                 <tr>
                                     <th scope="col">#</th>
@@ -43,6 +43,7 @@
                             </thead>
                             <tbody>
                             <?php
+                            if(!empty($data['row'])){
                             $no = 1;
                             foreach ($data['row'] as $row) :
                             ?>
@@ -60,7 +61,16 @@
                            <?php
                                 $no++;
                             endforeach;
+                        } else {
                             ?>
+                          <tr>
+                              <th class="text-center" colspan="8">--Tidak Ada Data--</th>
+
+
+                          </tr>
+                      <?php
+                        }
+                        ?>
 
 
                             </tbody>

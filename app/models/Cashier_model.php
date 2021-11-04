@@ -35,7 +35,7 @@ class Cashier_model{
 
     public function getRowByKeyword(){
         $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM mahasiswa WHERE nama LIKE :keyword";
+        $query = "SELECT * FROM '. $this->table . ' WHERE nama LIKE :keyword";
         $this->db->query($query);
         $this->db->bind('keyword', "%$keyword%");
 
@@ -46,12 +46,12 @@ class Cashier_model{
     public function add($data){
         $query ="INSERT INTO ". $this->table ."
                 VALUES
-                ('',CURRENT_TIMESTAMP, :cashier_name, :cashier_address, :cashier_type, :cashier_email, :cashier_phone_number, :cashier_password)";
+                ('',CURRENT_TIMESTAMP, :cashier_name, :cashier_address, :cashier_category, :cashier_email, :cashier_phone_number, :cashier_password)";
 
         $this->db->query($query);
         $this->db->bind('cashier_name',$data['cashier_name']);
         $this->db->bind('cashier_address',$data['cashier_address']);
-        $this->db->bind('cashier_type',$data['cashier_type']);
+        $this->db->bind('cashier_category',$data['cashier_category']);
         $this->db->bind('cashier_email',$data['cashier_email']);
         $this->db->bind('cashier_phone_number',$data['cashier_phone_number']);
         $this->db->bind('cashier_password',$data['cashier_password']);
@@ -66,7 +66,7 @@ class Cashier_model{
         $query ="UPDATE ". $this->table ."
                 SET cashier_name = :cashier_name, 
                     cashier_address = :cashier_address, 
-                    cashier_type = :cashier_type, 
+                    cashier_category = :cashier_category, 
                     cashier_email = :cashier_email, 
                     cashier_phone_number = :cashier_phone_number, 
                     cashier_password = :cashier_password
@@ -75,7 +75,7 @@ class Cashier_model{
         $this->db->query($query);
         $this->db->bind('cashier_name',$data['cashier_name']);
         $this->db->bind('cashier_address',$data['cashier_address']);
-        $this->db->bind('cashier_type',$data['cashier_type']);
+        $this->db->bind('cashier_category',$data['cashier_category']);
         $this->db->bind('cashier_email',$data['cashier_email']);
         $this->db->bind('cashier_phone_number',$data['cashier_phone_number']);
         $this->db->bind('cashier_password',$data['cashier_password']);
