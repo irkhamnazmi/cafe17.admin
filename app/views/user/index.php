@@ -43,19 +43,71 @@
                             </thead>
                             <tbody>
                             <?php
-                            if(!empty($data['row'])){
-                            $no = 1;
-                            foreach ($data['row'] as $row) :
-                            ?>
+                    if (!empty($data['row'])) {
+                        $no = 1;
+                        foreach ($data['row'] as $row) :
+                            $datetime = explode(' ', $row['user_date']);
+                            $date = explode('-', $datetime[0]);
+                            switch ($date[1]) {
+                                case '01';
+                                    $bulan = 'Januari';
+                                    break;
+                                case '02';
+                                    $bulan = 'Februari';
+                                    break;
+                                case '03';
+                                    $bulan = 'Maret';
+                                    break;
+                                case '04';
+                                    $bulan = 'April';
+                                    break;
+                                case '05';
+                                    $bulan = 'Mei';
+                                    break;
+                                case '06';
+                                    $bulan = 'Juni';
+                                    break;
+                                case '07';
+                                    $bulan = 'Juli';
+                                    break;
+                                case '08';
+                                    $bulan = 'Agustus';
+                                    break;
+                                case '09';
+                                    $bulan = 'September';
+                                    break;
+                                case '10';
+                                    $bulan = 'Oktober';
+                                    break;
+                                case '11';
+                                    $bulan = 'November';
+                                    break;
+                                case '12';
+                                    $bulan = 'Desember';
+                                    break;
+                            }
+                    ?>
                                <tr>
                                    <th scope="row"><?= $no; ?></th>
-                                   <td><?= $row['user_date']; ?></td>
+                                   <td><?= $date['2'] . ' ' . $bulan . ' ' . $date['0'] . ' ' . $datetime[1]; ?></td>
                                    <td><?= $row['user_name']; ?></td>
                                    <td><?= $row['user_email']; ?></td>
                                    <td><?= $row['user_phone_number']; ?></td>
                                    <td><?= $row['user_address']; ?></td>
-                                   <td><?= $row['user_password']; ?></td>
-                                   <td></td>
+                                   <td><?= '*****'; ?></td>
+                                   <td>
+                                           <div class="dropdown">
+                                               <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                   Select
+                                               </a>
+
+                                               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                   <a class="dropdown-item" href="<?= BASEURL; ?>/user/delete/<?= $row['user_id']; ?>" onclick="return confirm('yakin data <?= $row['user_name']; ?> akan dihapus?')">hapus</a>
+                                                   <!-- <a class="dropdown-item edituser" href="<?= BASEURL; ?>/user/edit/<?= $row['user_id']; ?>" data-toggle="modal" data-target="#formModal" data-id="<?= $row['user_id']; ?>">ubah</a> -->
+
+                                               </div>
+                                           </div>
+                                       </td>
                                </tr>
 
                            <?php

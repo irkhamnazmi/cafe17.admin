@@ -11,29 +11,69 @@
       var validation = Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function(event) {
          
-          var cekEditor =  $('#ckeditor').text();
+          // var cekEditor =  $('#ckeditor').text();
 
-          if(cekEditor == 'available'){
-            var editorValue = CKEDITOR.instances.editor.getData();
-            if (form.checkValidity() === false || editorValue.length == "") {
-              event.preventDefault();
-              event.stopPropagation();
-              $('#editor-error').show();
+          // if(cekEditor == 'available'){
+          //   var editorValue = CKEDITOR.instances.editor.getData();
+          //   if (form.checkValidity() === false || editorValue.length == "") {
+          //     event.preventDefault();
+          //     event.stopPropagation();
+          //     $('#editor-error').show();
              
-          }  
+          // }  
       
-            form.classList.add('was-validated');
-          }else{
-            if (form.checkValidity() === false || editorValue.length == "") {
-              event.preventDefault();
-              event.stopPropagation();
+          //   form.classList.add('was-validated');
+          // }else{
+          //   if (form.checkValidity() === false || editorValue.length == "") {
+          //     event.preventDefault();
+          //     event.stopPropagation();
            
              
-          }  
+          // } 
       
-            form.classList.add('was-validated');
-          }
+          //   form.classList.add('was-validated');
+          //   return true;
+          // }
         
+          var page =  $('#page').text();
+          switch(page){
+              case 'blog': 
+              var editorValue = CKEDITOR.instances.editor.getData();
+              if(form.checkValidity() === false || editorValue.length == ""){
+                event.preventDefault();
+                event.stopPropagation();
+                $('#editor-error').show();
+              }
+              form.classList.add('was-validated');
+                break;
+              case 'menu': 
+              var editorValue = CKEDITOR.instances.editor.getData();
+              if(form.checkValidity() === false || editorValue.length == ""){
+                event.preventDefault();
+                event.stopPropagation();
+                $('#editor-error').show();
+              }
+              form.classList.add('was-validated');
+                break;
+              case 'cashier': 
+              // var editorValue = CKEDITOR.instances.editor.getData();
+              if(form.checkValidity() === false){
+                event.preventDefault();
+                event.stopPropagation();
+                
+              }
+              form.classList.add('was-validated');
+                break;
+              case 'transaction': 
+              // var editorValue = CKEDITOR.instances.editor.getData();
+              if(form.checkValidity() === false){
+                event.preventDefault();
+                event.stopPropagation();
+               }
+           
+              form.classList.add('was-validated');
+                break;
+          }
         
          
        

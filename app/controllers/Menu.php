@@ -143,6 +143,11 @@ class Menu extends Controller
         }
     }
 
+    public function getmenu(){
+       
+       echo json_encode($this->model('Menu_model')->getRowById($_POST['menu_id']));
+    }
+
 
 
     

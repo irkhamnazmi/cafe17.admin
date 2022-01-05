@@ -55,6 +55,60 @@ function myFunction() {
   }
 }
 
+function whatsapp($id){
+
+  $.ajax({
+    url: baseurl + '/transaction/contact',
+    data: {
+      transaction_id: $id
+     
+    },
+    method: 'POST',
+    dataType: 'json',
+    success: function (data) {
+
+
+      window.location.href = 'https://wa.me/'+data.user_phone_number+'/';
+
+      
+    }
+  });
+
+}
+
+
+
+
+function calculate(qty){
+    
+  $.ajax({
+    url: baseurl + '/menu/getmenu',
+    data: {
+      menu_id: $('#menu_id').val()
+     
+    },
+    method: 'POST',
+    dataType: 'json',
+    success: function (data) {
+
+      if(data != ''){
+        var price = data.menu_price;
+        var result = price * qty;
+        $('#transaction_detail_price_total').val(result);
+      }else{
+        $('#transaction_detail_price_total').val('');
+      }
+
+      
+    }
+  });
+
+}
+
+
+
+
+
 
 
 

@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/custom.css" />
     <script src="<?= BASEURL; ?>/src/ckeditor/ckeditor.js"></script>
     <script src="<?= BASEURL; ?>/src/ckeditor/samples/js/sample.js"></script>
-    
+   
+
 
     <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
 

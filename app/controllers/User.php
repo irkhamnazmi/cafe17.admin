@@ -20,6 +20,20 @@ class User extends Controller{
         $this->view('template/footer');
     }
 
+
+    public function delete($id){
+        // var_dump($_POST);
+        if($this->model('User_model')->delete($id) > 0){
+            Flasher::setFlash('berhasil','dihapus','success');
+            header('Location: ' . BASEURL . '/user');
+            exit;
+        }else{
+            Flasher::setFlash('gagal','dihapus','danger');
+            header('Location: ' . BASEURL . '/user');
+            exit;
+        }
+    }
+
 }
 
 ?>

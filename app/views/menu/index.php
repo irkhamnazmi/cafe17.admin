@@ -109,7 +109,7 @@
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
                                               <a class="dropdown-item editMenu" href="<?= BASEURL; ?>/menu/edit/<?= $row['menu_id']; ?>" data-toggle="modal" data-target="#formModal" data-id="<?= $row['menu_id']; ?>">Ubah</a>
-                                              <a class="dropdown-item" href="<?= BASEURL; ?>/menu/delete/<?= $row['menu_id']; ?>" onclick="return confirm('yakin data <?= $row['menu_name']; ?>?')">Hapus</a>
+                                              <a class="dropdown-item" href="<?= BASEURL; ?>/menu/delete/<?= $row['menu_id']; ?>" onclick="return confirm('yakin data <?= $row['menu_name']; ?> akan dihapus?')">Hapus</a>
 
                                           </div>
 
@@ -154,7 +154,7 @@
               </div>
               <div class="modal-body">
                   <form id="form" class="needs-validation" novalidate action="<?= BASEURL; ?>/menu/add" method="post" enctype="multipart/form-data">
-                      <span id="ckeditor" style="display: none;">available</span>
+                      <span id="page" style="display: none;">menu</span>
                       <input type="hidden" name="menu_id" id="id" />
                       <div class="form-group">
                           <label for="menu_name">Nama Menu</label>

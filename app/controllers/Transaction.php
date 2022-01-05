@@ -7,10 +7,13 @@ class Transaction extends Controller{
     
     public function index(){
         // echo 'home/index';
+       
+
         $data = [
             'judul' => $this->model('Asset_model')->getTitle(),
             'page' =>  $this->page_name,
             'row' => $this->model('Transaction_model')->getAllRow()
+            
         ];
       
         $this->view('template/header', $data);
@@ -20,6 +23,131 @@ class Transaction extends Controller{
         $this->view('template/footer');
     }
 
-}
+    public function detail($id){
+        $x = $this->model('Transaction_model')->getSingleRowById($id);
+        $data = [
+            'judul' => $this->model('Asset_model')->getTitle(),
+            'page' =>  $this->page_name,
+            'status'=> $x['transaction_status'],
+            'row' => $this->model('Transaction_model')->getRowById($x['transaction_id']),
+            'rowId' => $x,
+            'rowMenu' => $this->model('Menu_model')->getAllRow()
+           
+        ];
 
-?>
+        $this->view('template/header', $data);
+        $this->view('template/sidebar', $data);
+        $this->view('template/navbar', $data);
+        $this->view('transaction/detail',$data);
+        $this->view('template/footer');
+    }
+
+
+    public function contact(){
+        echo json_encode($this->model('Transaction_model')->getSingleRowById($_POST['transaction_id']));
+    }
+
+
+    public function confirm($id){
+        $x  = $this->model('Transaction_model')->getRowById($id);
+        switch($x['transaction_status']){
+            case 'Menunggu Konfirmasi':
+              $status = 'Menunggu Pembayaran';
+                break;
+            case 'Menunggu Pembayaran':
+                $status = 'Sedang Proses';
+                break;
+
+        }
+        $data =  [
+            'transaction_id' => $id,
+            'transaction_status' => 'Menunggu Pembayaran'
+        ];
+      $this->model('Transaction_model')->postUpdateRowByStatus($data);
+      echo '<script>history.back()</script>';
+    }
+
+    public function delete($id){  
+        $this->model('Transaction_model')->postDeleteAllDetailRow($id);
+        $this->model('Transaction_model')->postDeleteRow($id);
+        echo json_encode('Success');
+        header('Location: ' . BASEURL . '/transaction');
+    }
+
+    // public function getinvoice(){
+    //     $x = $this->model('Transaction_model')->getLastRow();
+           
+    //     if(empty($x['code'])){
+    //         $order = 1;
+    //         // var_dump($order);
+           
+    //     }else{
+    //         $number = substr($x['code'],strpos($x['code'],'INV'));
+    //         $order = substr($number, 5,7);
+    //         $order++; 
+    //     }
+    //     $code = 'CAFE17PWT/'.date('Ymd').'/INV';
+    //     $new_inv = $code.sprintf("%03s", $order);
+    //     echo json_encode($new_inv); 
+    // }
+
+
+    // public function getdatabyinvoice(){
+
+    //     if(empty($this->model('Transaction_method')->getRowByInvoice($_POST['transaction_invoice_code']))){
+    //         echo json_encode('available');
+    //     }else{
+    //         echo json_encode('unavailable');
+    //     }
+
+
+    // }
+
+    public function create(){
+        $x = $this->model('Transaction_model')->getLastRow();
+           
+            if(empty($x['code'])){
+                $order = 1;
+                // var_dump($order);
+               
+            }else{
+                $number = substr($x['code'],strpos($x['code'],'INV'));
+                $order = substr($number, 5,7);
+                $order++; 
+            }
+            $code = 'CAFE17PWT/'.date('Ymd').'/INV';
+            $new_inv = $code.sprintf("%03s", $order);
+
+        $data = [
+            'transaction_status' => 'Menunggu Konfirmasi',
+            'transaction_category' => 'Offline',
+            'transaction_invoice_code' => $new_inv,
+            'transaction_customer_name' => $_POST['transaction_customer_name'],
+            'transaction_customer_phone_number' => $_POST['transaction_customer_phone_number'],
+            'transaction_customer_address' => $_POST['transaction_customer_address']
+        ];
+
+
+        if($this->model('Transaction_model')->postInsertRow($data)){
+            $x = $this->model('Transaction_model')->getRowByInvoice($data['transaction_invoice_code']);
+            header('Location: ' . BASEURL . '/transaction/detail/'.$x['transaction_id']);
+        }
+       
+    
+    }
+
+
+    public function addorder($id){
+        $data = [
+            'transaction_id' => $id,
+            'menu_id' => $_POST['menu_id'],
+            'transaction_detail_qty' => $_POST['transaction_detail_qty'],
+            'transaction_detail_total_price' => $_POST['transaction_detail_total_price'],
+            'transaction_detail_note' => $_POST['transaction_detail_note']
+        ];
+        if($this->model('Transaction_model')->postInsertDetailRow($data)){
+            header('Location: ' . BASEURL . '/transaction/detail/'.$data['transaction_id']);
+        }
+        
+    }
+}

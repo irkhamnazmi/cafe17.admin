@@ -21,7 +21,7 @@ $(function(){
  $('.editBlog').on('click',function(){
    $('#formModalLabel').html('Ubah Blog');
    $('.modal-footer button[type=submit]').html('Ubah');
-   $('.modal-body form').attr('action', 'http://localhost/cafe17.admin/public/blog/edit');
+   $('.modal-body form').attr('action', baseurl+'/blog/edit');
  
    $('#blog_image').attr('required', false);
    $('#form')[0].reset();
@@ -43,7 +43,7 @@ $(function(){
           $('#blog_title').val(data.blog_title);
           $('#cashier_id').val(data.cashier_id);
           $('#cashier_name').val(data.cashier_name);
-          $('#link_image').attr('href','http://localhost/cafe17.admin/public/uploads/images/'+data.blog_image);
+          $('#link_image').attr('href',baseurl+'/images/'+data.blog_image);
           $('#link_image').html('Lihat Foto '+data.blog_title);
           CKEDITOR.instances['editor'].setData(data.blog_description);
           $('#text_image').val(data.blog_image);
@@ -70,7 +70,7 @@ $(function(){
 $('.editCashier').on('click',function(){
     $('#formModalLabel').html('Ubah Kasir');
     $('.modal-footer button[type=submit]').html('Ubah');
-    $('.modal-body form').attr('action', 'http://localhost/cafe17.admin/public/cashier/edit');
+    $('.modal-body form').attr('action', baseurl+'/cashier/edit');
     
     form.classList.remove('was-validated');
   
@@ -78,7 +78,7 @@ $('.editCashier').on('click',function(){
     console.log(id);
   
     $.ajax({
-        url: 'http://localhost/cafe17.admin/public/cashier/getedit',
+        url: baseurl+'/cashier/getedit',
         data: {cashier_id : id},
         method: 'post',
         dataType: 'json',
@@ -120,7 +120,7 @@ $('.addMenu').on('click',function(){
 $('.editMenu').on('click',function(){
     $('#formModalLabel').html('Ubah Menu');
     $('.modal-footer button[type=submit]').html('Ubah');
-    $('.modal-body form').attr('action', 'http://localhost/cafe17.admin/public/menu/edit');
+    $('.modal-body form').attr('action', baseurl+'/menu/edit');
     
    
     // $('#txt_image').css('display','none');
@@ -137,6 +137,7 @@ $('.editMenu').on('click',function(){
         data: {menu_id : id},
         method: 'post',
         dataType: 'json',
+    
         success: function(data){
             // console.log(data);
            
@@ -159,6 +160,79 @@ $('.editMenu').on('click',function(){
              
         }
     });
+});
+
+//Transaction 
+
+$('.create').on('click',function(){
+    $('#formModalLabel').html('Buat Invoice');
+    // $('.modal-body form').attr('action', baseurl+'/menu/edit');
+    $.ajax({
+        url: baseurl+'/transaction/getinvoice',
+        method: 'post',
+        dataType: 'json',
+    
+        success: function(data){
+           
+            $('#transaction_invoice_code').val(data);
+
+        }
+    });
+    
+   
+    
+});
+
+
+//Transaction Detail
+
+$('.confirm').on('click',function(){
+   
+    $('#process').css('display','block');
+    const id = $(this).data('id');
+    console.log(id);
+    $('.modal-body form').attr('action', baseurl+'/transaction/confirm/'+id);
+    $('#menu').css('display','none');
+    $('#title').html('Apakah Pesanan ini bersedia untuk diproses ke Pembayaran?');
+    $('#subtitle').html('Pastikan Pesanan pembeli dalam keadaan siap untuk diantar ke Pelanggan.');
+    $('#btn').html('Konfirmasi');
+    $('#btn').attr('class','btn btn-success');
+    
+    
+
+    
+   
+    
+});
+
+
+
+$('.delete').on('click',function(){
+    $('#process').css('display','block');
+    const id = $(this).data('id');
+    console.log(id);
+    $('.modal-body form').attr('action', baseurl+'/transaction/delete/'+id);
+    $('#menu').css('display','none');
+    $('#title').html('Apakah Pesanan ini ingin di batalkan?');
+    $('#subtitle').html('Seluruh Data Pesanan ini akan hilang.');
+    $('#btn').html('Batal');
+    $('#btn').attr('class','btn btn-danger');
+
+    
+  
+   
+   
+    
+});
+
+$('.addOrder').on('click',function(){
+ 
+    $('#process').css('display','none');
+    $('#menu').css('display','block');
+
+
+   
+    
 });
 
 

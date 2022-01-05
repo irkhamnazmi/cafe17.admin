@@ -102,7 +102,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item editBlog" href="<?= BASEURL; ?>/blog/edit/<?= $row['blog_id']; ?>" data-toggle="modal" data-target="#formModal" data-id="<?= $row['blog_id']; ?>">Ubah</a>
-                                            <a class="dropdown-item" href="<?= BASEURL; ?>/blog/delete/<?= $row['blog_id']; ?>" onclick="return confirm('yakin data <?= $row['blog_name']; ?>?')">Hapus</a>
+                                            <a class="dropdown-item" href="<?= BASEURL; ?>/blog/delete/<?= $row['blog_id']; ?>" onclick="return confirm('yakin data <?= $row['blog_name']; ?> akan dihapus?')">Hapus</a>
                                         </div>
 
                                     </div>
@@ -143,7 +143,7 @@
             </div>
             <div class="modal-body">
                 <form id="form" class="needs-validation" novalidate action="<?= BASEURL; ?>/blog/add" method="post" enctype="multipart/form-data">
-                    <span id="ckeditor" style="display: none;">available</span>
+                    <span id="page" style="display: none;">blog</span>
                     <input type="hidden" name="blog_id" id="id" />
                     <div class="form-group">
                         <label for="blog_title">Judul</label>
@@ -154,8 +154,8 @@
                     </div>
                     <div class="form-group">
                         <label for="cashier_name">Penulis</label>
-                        <input type="text" class="form-control" id="cashier_name" value="<?= $_SESSION['cashier']['cashier_name']; ?>" readonly>
-                        <input type="hidden" class="form-control" id="cashier_id" value="<?= $_SESSION['cashier']['cashier_id']; ?>" name="cashier_id" readonly>
+                        <input type="text" class="form-control" id="cashier_name" style="background-color: transparent;" value="<?= $_SESSION['cashier']['name']; ?>" readonly>
+                        <input type="hidden" class="form-control" id="cashier_id" value="<?= $_SESSION['cashier']['id']; ?>" name="cashier_id" readonly>
                     </div>
 
                     <div class="form-group">

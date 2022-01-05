@@ -25,11 +25,12 @@
 
                 <?php endif;}?>
 
-                <li class="nav-item <?= $v = ('report' == $data['page']) ? 'active' : ''; ?>">
-                    <a class="nav-link" href="<?= BASEURL;?>/report">Laporan</a>
-                </li>
+               
                 <li class="nav-item <?= $v = ('transaction' == $data['page']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="<?= BASEURL;?>/transaction">Transaksi</a>
+                </li>
+                <li class="nav-item <?= $v = ('report' == $data['page']) ? 'active' : ''; ?>">
+                    <a class="nav-link" href="<?= BASEURL;?>/report">Laporan</a>
                 </li>
                 <!-- <li class="nav-item" style="margin-top: 10%;">
                     <a class="nav-link" href="#">Keluar</a>
