@@ -64,7 +64,7 @@
                 <div class="row" style="padding-right:15%">
 
                     <div class="col">
-
+                        <h1></h1>
                         <div class="card" style="color: black; border:none;">
                             <div class="card-body">
                                 <form>
@@ -91,7 +91,7 @@
 
                                     <div class="form-group">
                                         <label for="transaction_category">Kategori Transaksi</label>
-                                        <input type="text" readonly style="background-color: transparent;" value="<?= $data['rowId']['transaction_category'];?>">
+                                        <input class="form-control" type="text" readonly style="background-color: transparent;" value="<?= $data['rowId']['transaction_category'];?>">
                                     </div>
 
                                 </form>
