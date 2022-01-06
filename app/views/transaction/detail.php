@@ -19,7 +19,7 @@
                                 </div>
                             <?php
                                 break;
-                            case 'Belum Bayar';
+                            case 'Sedang Proses';
                             ?>
                                 <div class="alert alert-danger" style="max-width: 100%; text-align: center;">
                                     <h4><?= $data['status']; ?></h4>
@@ -62,9 +62,10 @@
 
 
                 <div class="row" style="padding-right:15%">
-
+                <h1>Pemesan</h1>
+                <h5 class="text-success"><?= $data['rowId']['transaction_category'];?></h5>
                     <div class="col">
-                        <h1></h1>
+                        
                         <div class="card" style="color: black; border:none;">
                             <div class="card-body">
                                 <form>
@@ -89,10 +90,10 @@
                                         <textarea type="text" readonly style="background-color: transparent;" class="form-control"><?= $data['rowId']['transaction_customer_address']; ?></textarea>
                                     </div>
 
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="transaction_category">Kategori Transaksi</label>
                                         <input class="form-control" type="text" readonly style="background-color: transparent;" value="<?= $data['rowId']['transaction_category'];?>">
-                                    </div>
+                                    </div> -->
 
                                 </form>
 
@@ -105,14 +106,12 @@
 
                         <div class="card" style="color: black; border:none;">
                             <div class="card-body">
+                                
                                 <form>
-
-                                    <div class="form-group">
+                                <div class="form-group">
                                         <label>Invoice#</label>
                                         <input type="text" readonly style="background-color: transparent;" class="form-control" value="<?= $data['rowId']['transaction_invoice_code']; ?>">
-                                    </div>
-
-                                    <div class="form-group">
+                                    </div> <div class="form-group">
                                         <label>Tanggal</label>
                                         <?php
                                         $datetime = explode(' ', $data['rowId']['transaction_date']);
@@ -158,28 +157,44 @@
                                         ?>
                                         <input type="text" readonly style="background-color: transparent;" class="form-control" value="<?= $date['2'] . ' ' . $bulan . ' ' . $date['0'] ?>">
                                     </div>
-                                    
 
                                     <div class="form-group">
                                         <label>Biaya</label>
-                                        <input type="email" class="form-control" style="background-color: transparent;" value="Rp <?= $data['rowId']['transaction_pay_total']; ?>,-" readonly>
+                                        <input type="text" class="form-control" style="background-color: transparent;" value="Rp <?= $data['rowId']['transaction_pay_total']; ?>,-" readonly>
                                     </div>
-                                    
-
-                                    <?php 
+                                <?php 
                         
                         if($data['rowId']['transaction_category'] == 'Online'){
-                            ?>
-                            
-                            <?php
+                            if($data['rowId']['transaction_status'] != 'Menunggu Konfirmasi' ){
+                                ?>
+                                        <div class="form-group">
+                                        <label>Metode Pembayaran</label>
+                                        <input type="text" class="form-control" style="background-color: transparent;" value="<?= $data['rowId']['transaction_method']; ?>" readonly>
+                                    </div>
+                                    <?php
+                            }
+                          
+                          
                         } else {
-                            ?>
-                            
-                            
-                            <?php 
+                            if($data['rowId']['transaction_status'] != 'Menunggu Konfirmasi' ){
+                                ?>
+                                <div class="form-group">
+                                <label>Metode Pembayaran</label>
+                                <input type="text" class="form-control" style="background-color: transparent;" value="<?= $data['rowId']['transaction_method']; ?>" readonly>
+                                </div>
+                                <?php
+                            }
                         }
                         
                         ?>    
+                                
+
+                                   
+                                    
+
+                                    
+
+                             
 
 
                                 </form>

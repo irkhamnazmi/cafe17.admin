@@ -191,11 +191,44 @@ $('.confirm').on('click',function(){
     $('#process').css('display','block');
     const id = $(this).data('id');
     console.log(id);
+    $.ajax({
+        url: baseurl+'/transaction/getid',
+        data: {transaction_id : id},
+        method: 'post',
+        dataType: 'json',
+    
+        success: function(data){
+            switch(data.transaction_status){
+                case 'Menunggu Konfirmasi':
+                    
+                    $('#subtitle').html('Pastikan Pesanan pembeli dalam keadaan siap untuk diantar ke Pelanggan.');
+                    $('#btn').html('Konfirmasi');
+                    break;
+                case 'Menunggu Pembayaran':
+                    if(data.transaction_category == 'Online'){
+                        $('#subtitle').html('Hubungi pelanggan untuk segera melakukan proses pembayaran.');
+                        $('#btn').css('display','none');
+                        
+                    }else{
+                        $('#subtitle').html('Pastikan pelanggan siap melakukan proses pembayaran.');
+                        $('#btn').css('display','block');
+                        $('#btn').html('Bayar');
+                    }    
+                    
+                    break;
+                case 'Sedang Proses':
+                   
+                    $('#subtitle').html('Pastikan Kasir sudah menerima pembayaran dari pelanggan.');
+                    $('#btn').css('display','block');
+                    $('#btn').html('Lunas');
+              
+            }
+
+        }
+    });
     $('.modal-body form').attr('action', baseurl+'/transaction/confirm/'+id);
     $('#menu').css('display','none');
-    $('#title').html('Apakah Pesanan ini bersedia untuk diproses ke Pembayaran?');
-    $('#subtitle').html('Pastikan Pesanan pembeli dalam keadaan siap untuk diantar ke Pelanggan.');
-    $('#btn').html('Konfirmasi');
+    $('#title').html('Apakah Pesanan ini bersedia untuk diproses?');
     $('#btn').attr('class','btn btn-success');
     
     
@@ -211,10 +244,38 @@ $('.delete').on('click',function(){
     $('#process').css('display','block');
     const id = $(this).data('id');
     console.log(id);
+
+    $.ajax({
+        url: baseurl+'/transaction/getid',
+        data: {transaction_id : id},
+        method: 'post',
+        dataType: 'json',
+    
+        success: function(data){
+            switch(data.transaction_status){
+                case 'Menunggu Konfirmasi':
+                    
+                    $('#subtitle').html('Seluruh Data Pesanan ini akan hilang.');
+                    break;
+                case 'Menunggu Pembayaran':
+                 
+                    $('#subtitle').html('Status Pesanan akan diubah menjadi "Menunggu Konfirmasi".');
+                    break;
+                case 'Sedang Proses':
+                   
+                    $('#subtitle').html('Status Pesanana akan diubah menjadi "Menunggu Pembayaran".');
+              
+            }
+          
+          
+         
+        }
+    });
+
     $('.modal-body form').attr('action', baseurl+'/transaction/delete/'+id);
     $('#menu').css('display','none');
     $('#title').html('Apakah Pesanan ini ingin di batalkan?');
-    $('#subtitle').html('Seluruh Data Pesanan ini akan hilang.');
+    
     $('#btn').html('Batal');
     $('#btn').attr('class','btn btn-danger');
 

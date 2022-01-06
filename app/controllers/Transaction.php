@@ -49,29 +49,69 @@ class Transaction extends Controller{
 
 
     public function confirm($id){
-        $x  = $this->model('Transaction_model')->getRowById($id);
+        $x = $this->model('Transaction_model')->getSingleRowById($id);
         switch($x['transaction_status']){
+           
             case 'Menunggu Konfirmasi':
-              $status = 'Menunggu Pembayaran';
+                $data = [
+                    'transaction_status' => 'Menunggu Pembayaran',
+                    'transaction_id' => $id,
+
+                ];
+                $this->model('Transaction_model')->postUpdateRowByStatus($data);
                 break;
             case 'Menunggu Pembayaran':
-                $status = 'Sedang Proses';
-                break;
+                $data = [
+                    'transaction_status' => 'Sedang Proses',
+                    'transaction_id' => $id,
 
+                ];
+                $this->model('Transaction_model')->postUpdateRowByStatus($data);
+                break;
+            case 'Sedang Proses':
+                $data = [
+                    'transaction_status' => 'Lunas',
+                    'transaction_id' => $id
+
+                ];
+                $this->model('Transaction_model')->postUpdateRowByStatus($data);
+                echo '<script>history.back()</script>';
+           
         }
-        $data =  [
-            'transaction_id' => $id,
-            'transaction_status' => 'Menunggu Pembayaran'
-        ];
-      $this->model('Transaction_model')->postUpdateRowByStatus($data);
+      
       echo '<script>history.back()</script>';
     }
 
     public function delete($id){  
-        $this->model('Transaction_model')->postDeleteAllDetailRow($id);
-        $this->model('Transaction_model')->postDeleteRow($id);
+
+        $x = $this->model('Transaction_model')->getSingleRowById($id);
+        switch($x['transaction_status']){
+            case 'Menunggu Konfirmasi':
+                $this->model('Transaction_model')->postDeleteAllDetailRow($id);
+                $this->model('Transaction_model')->postDeleteRow($id);
+                break;
+            case 'Menunggu Pembayaran':
+                $data = [
+                    'transaction_status' => 'Menunggu Konfirmasi',
+                    'transaction_id' => $id,
+
+                ];
+                $this->model('Transaction_model')->postUpdateRowByStatus($data);
+                break;
+            case 'Sedang Proses':
+                $data = [
+                    'transaction_status' => 'Menunggu Pembayaran',
+                    'transaction_id' => $id
+
+                ];
+                $this->model('Transaction_model')->postUpdateRowByStatus($data);
+               
+           
+        }
+        
+       
         echo json_encode('Success');
-        header('Location: ' . BASEURL . '/transaction');
+        echo '<script>history.back()</script>';
     }
 
     // public function getinvoice(){
@@ -149,5 +189,9 @@ class Transaction extends Controller{
             header('Location: ' . BASEURL . '/transaction/detail/'.$data['transaction_id']);
         }
         
+    }
+
+    public function getid(){
+        echo json_encode($this->model('Transaction_model')->getSingleRowById($_POST['transaction_id']));
     }
 }
