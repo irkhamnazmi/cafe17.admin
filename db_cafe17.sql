@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 07 Jan 2022 pada 09.26
+-- Generation Time: 07 Jan 2022 pada 10.53
 -- Versi Server: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -93,7 +93,6 @@ CREATE TABLE `m_menu` (
 --
 
 INSERT INTO `m_menu` (`menu_id`, `menu_date`, `menu_code`, `menu_name`, `menu_category`, `menu_description`, `menu_price`, `menu_image`) VALUES
-(31, '2021-10-10 23:19:58', 'M1', 'Sop Ayam Kemangi', 'Makanan', '<p>-</p>\r\n', 13000, 'mieayam.jpg'),
 (34, '2021-10-22 09:44:48', 'M2', 'Mie ayam', 'Makanan', '<p>Rasanya gurih</p>\r\n', 12000, 'mieayam.jpg'),
 (35, '2021-11-01 22:22:36', 'T1', 'Teh Manis', 'Minuman', '<p>Minuman Teh nyegerin</p>\r\n', 6000, 'Tea.png'),
 (37, '2022-01-07 15:01:56', 'K1', 'Kwetiau Mangkok', 'Makanan', '<p>-</p>\r\n', 11000, '6728d0c6-8fac-49ec-aa7a-63965f34a9f5.jpeg'),
@@ -105,7 +104,8 @@ INSERT INTO `m_menu` (`menu_id`, `menu_date`, `menu_code`, `menu_name`, `menu_ca
 (43, '2022-01-07 15:12:04', 'P2', 'Paket Nasi + Telor dadar + Terong Goreng + Kol/Kobis Goreng (Geprek)', 'Makanan', '<p>-</p>\r\n', 10000, 'WhatsApp Image 2022-01-07 at 15.08.27.jpeg'),
 (44, '2022-01-07 15:20:20', 'E1', 'Es Jeruk', 'Minuman', '<p>-</p>\r\n', 4000, 'WhatsApp Image 2022-01-07 at 15.16.55.jpeg'),
 (45, '2022-01-07 15:21:03', 'E2', 'Es Lemon Tea', 'Minuman', '<p>-</p>\r\n', 6000, 'WhatsApp Image 2022-01-07 at 15.17.56.jpeg'),
-(46, '2022-01-07 15:22:40', 'J2', 'Jus Alpukat', 'Minuman', '<p>-</p>\r\n', 7000, 'WhatsApp Image 2022-01-07 at 15.21.36.jpeg');
+(46, '2022-01-07 15:22:40', 'J2', 'Jus Alpukat', 'Minuman', '<p>-</p>\r\n', 7000, 'WhatsApp Image 2022-01-07 at 15.21.36.jpeg'),
+(47, '2022-01-07 16:51:59', 'S1', 'Sop Ayam Kemangi', 'Makanan', '<p>-</p>\r\n', 13000, 'WhatsApp Image 2022-01-07 at 16.18.08.jpeg');
 
 -- --------------------------------------------------------
 
@@ -173,15 +173,6 @@ CREATE TABLE `t_transaction_detail` (
   `transaction_detail_price_total` int(11) NOT NULL,
   `transaction_detail_note` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `t_transaction_detail`
---
-
-INSERT INTO `t_transaction_detail` (`transaction_detail_id`, `transaction_id`, `menu_id`, `transaction_detail_qty`, `transaction_detail_price_total`, `transaction_detail_note`) VALUES
-(22, 20, 31, 1, 12000, ''),
-(23, 21, 31, 1, 12000, ''),
-(25, 23, 31, 1, 12000, '');
 
 --
 -- Trigger `t_transaction_detail`
@@ -375,7 +366,7 @@ ALTER TABLE `m_cashier`
 -- AUTO_INCREMENT for table `m_menu`
 --
 ALTER TABLE `m_menu`
-  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `m_user`
 --
@@ -406,7 +397,7 @@ ALTER TABLE `m_blog`
 --
 ALTER TABLE `t_transaction_detail`
   ADD CONSTRAINT `t_transaction_detail_ibfk_1` FOREIGN KEY (`transaction_id`) REFERENCES `t_transaction` (`transaction_id`),
-  ADD CONSTRAINT `t_transaction_detail_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `m_menu` (`menu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `t_transaction_detail_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `m_menu` (`menu_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
