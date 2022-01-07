@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 07 Jan 2022 pada 10.53
+-- Generation Time: 07 Jan 2022 pada 11.12
 -- Versi Server: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -105,7 +105,7 @@ INSERT INTO `m_menu` (`menu_id`, `menu_date`, `menu_code`, `menu_name`, `menu_ca
 (44, '2022-01-07 15:20:20', 'E1', 'Es Jeruk', 'Minuman', '<p>-</p>\r\n', 4000, 'WhatsApp Image 2022-01-07 at 15.16.55.jpeg'),
 (45, '2022-01-07 15:21:03', 'E2', 'Es Lemon Tea', 'Minuman', '<p>-</p>\r\n', 6000, 'WhatsApp Image 2022-01-07 at 15.17.56.jpeg'),
 (46, '2022-01-07 15:22:40', 'J2', 'Jus Alpukat', 'Minuman', '<p>-</p>\r\n', 7000, 'WhatsApp Image 2022-01-07 at 15.21.36.jpeg'),
-(47, '2022-01-07 16:51:59', 'S1', 'Sop Ayam Kemangi', 'Makanan', '<p>-</p>\r\n', 13000, 'WhatsApp Image 2022-01-07 at 16.18.08.jpeg');
+(48, '2022-01-07 17:08:13', 'S1', 'Sop Ayam Kemangi', 'Makanan', '<p>-</p>\r\n', 13000, 'WhatsApp Image 2022-01-07 at 16.18.08.jpg');
 
 -- --------------------------------------------------------
 
@@ -366,7 +366,7 @@ ALTER TABLE `m_cashier`
 -- AUTO_INCREMENT for table `m_menu`
 --
 ALTER TABLE `m_menu`
-  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `m_user`
 --
