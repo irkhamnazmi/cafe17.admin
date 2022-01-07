@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 07 Jan 2022 pada 11.12
+-- Generation Time: 07 Jan 2022 pada 11.22
 -- Versi Server: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -95,16 +95,16 @@ CREATE TABLE `m_menu` (
 INSERT INTO `m_menu` (`menu_id`, `menu_date`, `menu_code`, `menu_name`, `menu_category`, `menu_description`, `menu_price`, `menu_image`) VALUES
 (34, '2021-10-22 09:44:48', 'M2', 'Mie ayam', 'Makanan', '<p>Rasanya gurih</p>\r\n', 12000, 'mieayam.jpg'),
 (35, '2021-11-01 22:22:36', 'T1', 'Teh Manis', 'Minuman', '<p>Minuman Teh nyegerin</p>\r\n', 6000, 'Tea.png'),
-(37, '2022-01-07 15:01:56', 'K1', 'Kwetiau Mangkok', 'Makanan', '<p>-</p>\r\n', 11000, '6728d0c6-8fac-49ec-aa7a-63965f34a9f5.jpeg'),
-(38, '2022-01-07 15:05:20', 'A1', 'Ayam Bakar Pedas', 'Makanan', '<p>-</p>\r\n', 13000, 'WhatsApp Image 2022-01-07 at 14.59.59.jpeg'),
-(39, '2022-01-07 15:06:44', 'A2', 'Paket Nasi Ayam Sambel Matah', 'Makanan', '<p>-</p>\r\n', 15000, 'WhatsApp Image 2022-01-07 at 15.02.06.jpeg'),
-(40, '2022-01-07 15:08:03', 'P1', 'Paket Nasi + Ayam + Terong + Kol/Kubis Goreng (Geprek)', 'Makanan', '<p>-</p>\r\n', 13000, 'WhatsApp Image 2022-01-07 at 15.03.08.jpeg'),
-(41, '2022-01-07 15:09:06', 'A3', 'Ayam Geprek Keju', 'Makanan', '<p>-</p>\r\n', 15000, 'WhatsApp Image 2022-01-07 at 15.04.20.jpeg'),
-(42, '2022-01-07 15:10:48', 'A4', 'Ayam Crispy Saos Asam Pedas ', 'Makanan', '<p>-</p>\r\n', 14000, 'WhatsApp Image 2022-01-07 at 15.06.02.jpeg'),
-(43, '2022-01-07 15:12:04', 'P2', 'Paket Nasi + Telor dadar + Terong Goreng + Kol/Kobis Goreng (Geprek)', 'Makanan', '<p>-</p>\r\n', 10000, 'WhatsApp Image 2022-01-07 at 15.08.27.jpeg'),
-(44, '2022-01-07 15:20:20', 'E1', 'Es Jeruk', 'Minuman', '<p>-</p>\r\n', 4000, 'WhatsApp Image 2022-01-07 at 15.16.55.jpeg'),
-(45, '2022-01-07 15:21:03', 'E2', 'Es Lemon Tea', 'Minuman', '<p>-</p>\r\n', 6000, 'WhatsApp Image 2022-01-07 at 15.17.56.jpeg'),
-(46, '2022-01-07 15:22:40', 'J2', 'Jus Alpukat', 'Minuman', '<p>-</p>\r\n', 7000, 'WhatsApp Image 2022-01-07 at 15.21.36.jpeg'),
+(37, '2022-01-07 15:01:56', 'K1', 'Kwetiau Mangkok', 'Makanan', '<p>-</p>\r\n', 11000, '6728d0c6-8fac-49ec-aa7a-63965f34a9f5.jpg'),
+(38, '2022-01-07 15:05:20', 'A1', 'Ayam Bakar Pedas', 'Makanan', '<p>-</p>\r\n', 13000, 'WhatsApp Image 2022-01-07 at 14.59.59.jpg'),
+(39, '2022-01-07 15:06:44', 'A2', 'Paket Nasi Ayam Sambel Matah', 'Makanan', '<p>-</p>\r\n', 15000, 'WhatsApp Image 2022-01-07 at 15.02.06.jpg'),
+(40, '2022-01-07 15:08:03', 'P1', 'Paket Nasi + Ayam + Terong + Kol/Kubis Goreng (Geprek)', 'Makanan', '<p>-</p>\r\n', 13000, 'WhatsApp Image 2022-01-07 at 15.03.08.jpg'),
+(41, '2022-01-07 15:09:06', 'A3', 'Ayam Geprek Keju', 'Makanan', '<p>-</p>\r\n', 15000, 'WhatsApp Image 2022-01-07 at 15.04.20.jpg'),
+(42, '2022-01-07 15:10:48', 'A4', 'Ayam Crispy Saos Asam Pedas ', 'Makanan', '<p>-</p>\r\n', 14000, 'WhatsApp Image 2022-01-07 at 15.06.02.jpg'),
+(43, '2022-01-07 15:12:04', 'P2', 'Paket Nasi + Telor dadar + Terong Goreng + Kol/Kobis Goreng (Geprek)', 'Makanan', '<p>-</p>\r\n', 10000, 'WhatsApp Image 2022-01-07 at 15.08.27.jpg'),
+(44, '2022-01-07 15:20:20', 'E1', 'Es Jeruk', 'Minuman', '<p>-</p>\r\n', 4000, 'WhatsApp Image 2022-01-07 at 15.16.55.jpg'),
+(45, '2022-01-07 15:21:03', 'E2', 'Es Lemon Tea', 'Minuman', '<p>-</p>\r\n', 6000, 'WhatsApp Image 2022-01-07 at 15.17.56.jpg'),
+(46, '2022-01-07 15:22:40', 'J2', 'Jus Alpukat', 'Minuman', '<p>-</p>\r\n', 7000, 'WhatsApp Image 2022-01-07 at 15.21.36.jpg'),
 (48, '2022-01-07 17:08:13', 'S1', 'Sop Ayam Kemangi', 'Makanan', '<p>-</p>\r\n', 13000, 'WhatsApp Image 2022-01-07 at 16.18.08.jpg');
 
 -- --------------------------------------------------------
