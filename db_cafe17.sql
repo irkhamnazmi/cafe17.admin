@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 05 Jan 2022 pada 16.34
+-- Generation Time: 07 Jan 2022 pada 09.26
 -- Versi Server: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -93,11 +93,19 @@ CREATE TABLE `m_menu` (
 --
 
 INSERT INTO `m_menu` (`menu_id`, `menu_date`, `menu_code`, `menu_name`, `menu_category`, `menu_description`, `menu_price`, `menu_image`) VALUES
-(31, '2021-10-10 23:19:58', 'M1', 'Sop Ayam', 'Makanan', '<p>Wihh enake</p>\r\n', 12000, 'mieayam.jpg'),
-(32, '2021-10-11 10:45:53', 'S1', 'Sop Ayam', 'Makanan', '<p>asdasdas</p>\r\n', 15000, 'sop ayam.png'),
+(31, '2021-10-10 23:19:58', 'M1', 'Sop Ayam Kemangi', 'Makanan', '<p>-</p>\r\n', 13000, 'mieayam.jpg'),
 (34, '2021-10-22 09:44:48', 'M2', 'Mie ayam', 'Makanan', '<p>Rasanya gurih</p>\r\n', 12000, 'mieayam.jpg'),
 (35, '2021-11-01 22:22:36', 'T1', 'Teh Manis', 'Minuman', '<p>Minuman Teh nyegerin</p>\r\n', 6000, 'Tea.png'),
-(36, '2021-11-01 22:25:15', 'J1', 'Jus Jeruk', 'Minuman', '<p>Jus Jeruk Baik Untuk Kesehatan kaya akan vitamin C</p>\r\n', 5000, 'juice.png');
+(37, '2022-01-07 15:01:56', 'K1', 'Kwetiau Mangkok', 'Makanan', '<p>-</p>\r\n', 11000, '6728d0c6-8fac-49ec-aa7a-63965f34a9f5.jpeg'),
+(38, '2022-01-07 15:05:20', 'A1', 'Ayam Bakar Pedas', 'Makanan', '<p>-</p>\r\n', 13000, 'WhatsApp Image 2022-01-07 at 14.59.59.jpeg'),
+(39, '2022-01-07 15:06:44', 'A2', 'Paket Nasi Ayam Sambel Matah', 'Makanan', '<p>-</p>\r\n', 15000, 'WhatsApp Image 2022-01-07 at 15.02.06.jpeg'),
+(40, '2022-01-07 15:08:03', 'P1', 'Paket Nasi + Ayam + Terong + Kol/Kubis Goreng (Geprek)', 'Makanan', '<p>-</p>\r\n', 13000, 'WhatsApp Image 2022-01-07 at 15.03.08.jpeg'),
+(41, '2022-01-07 15:09:06', 'A3', 'Ayam Geprek Keju', 'Makanan', '<p>-</p>\r\n', 15000, 'WhatsApp Image 2022-01-07 at 15.04.20.jpeg'),
+(42, '2022-01-07 15:10:48', 'A4', 'Ayam Crispy Saos Asam Pedas ', 'Makanan', '<p>-</p>\r\n', 14000, 'WhatsApp Image 2022-01-07 at 15.06.02.jpeg'),
+(43, '2022-01-07 15:12:04', 'P2', 'Paket Nasi + Telor dadar + Terong Goreng + Kol/Kobis Goreng (Geprek)', 'Makanan', '<p>-</p>\r\n', 10000, 'WhatsApp Image 2022-01-07 at 15.08.27.jpeg'),
+(44, '2022-01-07 15:20:20', 'E1', 'Es Jeruk', 'Minuman', '<p>-</p>\r\n', 4000, 'WhatsApp Image 2022-01-07 at 15.16.55.jpeg'),
+(45, '2022-01-07 15:21:03', 'E2', 'Es Lemon Tea', 'Minuman', '<p>-</p>\r\n', 6000, 'WhatsApp Image 2022-01-07 at 15.17.56.jpeg'),
+(46, '2022-01-07 15:22:40', 'J2', 'Jus Alpukat', 'Minuman', '<p>-</p>\r\n', 7000, 'WhatsApp Image 2022-01-07 at 15.21.36.jpeg');
 
 -- --------------------------------------------------------
 
@@ -147,8 +155,9 @@ CREATE TABLE `t_transaction` (
 --
 
 INSERT INTO `t_transaction` (`transaction_id`, `transaction_date`, `transaction_invoice_code`, `user_id`, `transaction_pay_total`, `transaction_status`, `transaction_method`, `transaction_category`, `transaction_customer_name`, `transaction_customer_address`, `transaction_customer_phone_number`) VALUES
-(20, '2022-01-04 00:13:12', 'CAFE17PWT/20220103/INV001', 15, 12000, 'Menunggu Konfirmasi', '', 'Online', 'Nazmiu', 'Dukuhwaluh', '085786625255'),
-(21, '2022-01-04 15:31:58', 'CAFE17PWT/20220104/INV002', 15, 12000, 'Menunggu Pembayaran', '', 'Online', 'Nazmiu', 'Dukuhwaluh', '085786625255');
+(20, '2022-01-06 10:52:50', 'CAFE17PWT/20220103/INV001', 15, 12000, 'Menunggu Pembayaran', '', 'Online', 'Nazmiu', 'Dukuhwaluh', '085786625255'),
+(21, '2022-01-06 17:56:15', 'CAFE17PWT/20220104/INV002', 15, 12000, 'Menunggu Pembayaran', '', 'Online', 'Nazmiu', 'Dukuhwaluh', '085786625255'),
+(23, '2022-01-06 18:04:49', 'CAFE17PWT/20220106/INV003', 15, 12000, 'Menunggu Konfirmasi', '', 'Online', 'Nazmiu', 'Dukuhwaluh', '085786625255');
 
 -- --------------------------------------------------------
 
@@ -171,7 +180,8 @@ CREATE TABLE `t_transaction_detail` (
 
 INSERT INTO `t_transaction_detail` (`transaction_detail_id`, `transaction_id`, `menu_id`, `transaction_detail_qty`, `transaction_detail_price_total`, `transaction_detail_note`) VALUES
 (22, 20, 31, 1, 12000, ''),
-(23, 21, 31, 1, 12000, '');
+(23, 21, 31, 1, 12000, ''),
+(25, 23, 31, 1, 12000, '');
 
 --
 -- Trigger `t_transaction_detail`
@@ -365,7 +375,7 @@ ALTER TABLE `m_cashier`
 -- AUTO_INCREMENT for table `m_menu`
 --
 ALTER TABLE `m_menu`
-  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `m_user`
 --
@@ -375,12 +385,12 @@ ALTER TABLE `m_user`
 -- AUTO_INCREMENT for table `t_transaction`
 --
 ALTER TABLE `t_transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `t_transaction_detail`
 --
 ALTER TABLE `t_transaction_detail`
-  MODIFY `transaction_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `transaction_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
@@ -396,7 +406,7 @@ ALTER TABLE `m_blog`
 --
 ALTER TABLE `t_transaction_detail`
   ADD CONSTRAINT `t_transaction_detail_ibfk_1` FOREIGN KEY (`transaction_id`) REFERENCES `t_transaction` (`transaction_id`),
-  ADD CONSTRAINT `t_transaction_detail_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `m_menu` (`menu_id`);
+  ADD CONSTRAINT `t_transaction_detail_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `m_menu` (`menu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
