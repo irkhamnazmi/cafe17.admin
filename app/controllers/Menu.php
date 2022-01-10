@@ -87,7 +87,7 @@ class Menu extends Controller
     public function edit()
     {   
         
-        if ($_FILES["menu_image"]["error"] = 0) {
+        if (isset($_FILES["menu_image"])) {
             $target_dir = BASEDIRECTORY.'/uploads/images/';
             $file_name = basename($_FILES["menu_image"]["name"]);
             $target_file = $target_dir . $file_name;
