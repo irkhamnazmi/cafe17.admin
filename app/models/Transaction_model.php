@@ -63,7 +63,7 @@ class Transaction_model{
     {
         $query ="INSERT INTO ". $this->table ."
                 VALUES
-                ('',CURRENT_TIMESTAMP, :transaction_invoice_code,'', '', :transaction_status, '', :transaction_category, :transaction_customer_name,:transaction_customer_phone_number,:transaction_customer_address)";
+                ('',CURRENT_TIMESTAMP, :transaction_invoice_code,'', '', :transaction_status, '', :transaction_category, :transaction_customer_name,:transaction_customer_phone_number,:transaction_customer_address,'')";
 
         $this->db->query($query);
         $this->db->bind('transaction_invoice_code',$data['transaction_invoice_code']);

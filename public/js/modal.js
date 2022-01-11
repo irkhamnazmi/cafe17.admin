@@ -263,7 +263,7 @@ $('.delete').on('click',function(){
                     break;
                 case 'Sedang Proses':
                    
-                    $('#subtitle').html('Status Pesanana akan diubah menjadi "Menunggu Pembayaran".');
+                    $('#subtitle').html('Status Pesanan akan diubah menjadi "Menunggu Pembayaran".');
               
             }
           

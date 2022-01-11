@@ -6,7 +6,7 @@
                         <?php
                         switch ($data['status']) {
                             case 'Menunggu Konfirmasi';
-                            ?>
+                        ?>
                                 <div class="alert alert-warning" style="max-width: 100%; text-align: center;">
                                     <h4><?= $data['status']; ?></h4>
                                 </div>
@@ -49,7 +49,7 @@
 
                                 <button class="btn btn-success"><span class="iconify" data-inline="false" data-icon="bi:whatsapp" style="color: #ffffff; font-size: 24px;" onclick="whatsapp('<?= $data['rowId']['transaction_id']; ?>')"></span>
                                     Kontak</button>
-                                <button class="btn btn-danger delete"  data-id="<?= $data['rowId']['transaction_id']; ?>" data-toggle="modal" data-target="#formModal"><span class="iconify" data-inline="false" data-icon="ic:outline-cancel" style="color: #ffffff; font-size: 24px;"></span>
+                                <button class="btn btn-danger delete" data-id="<?= $data['rowId']['transaction_id']; ?>" data-toggle="modal" data-target="#formModal"><span class="iconify" data-inline="false" data-icon="ic:outline-cancel" style="color: #ffffff; font-size: 24px;"></span>
                                     Batal</button>
                                 <button class="btn btn-primary confirm" data-toggle="modal" data-target="#formModal" data-id="<?= $data['rowId']['transaction_id']; ?>"><span class="iconify" data-inline="false" data-icon="akar-icons:circle-check" style="font-size: 24px;"></span> Proses</button>
 
@@ -62,14 +62,14 @@
 
 
                 <div class="row" style="padding-right:15%">
-                <h1>Pemesan</h1>
-                <h5 class="text-success"><?= $data['rowId']['transaction_category'];?></h5>
+                    <h1>Pemesan</h1>
+                    <h5 class="text-success"><?= $data['rowId']['transaction_category']; ?></h5>
                     <div class="col">
-                        
+
                         <div class="card" style="color: black; border:none;">
                             <div class="card-body">
                                 <form>
-                        
+
                                     <div class="form-group">
                                         <label>Nama</label>
                                         <input type="text" class="form-control" style="background-color: transparent;" value="<?= $data['rowId']['transaction_customer_name']; ?>" readonly>
@@ -92,7 +92,7 @@
 
                                     <!-- <div class="form-group">
                                         <label for="transaction_category">Kategori Transaksi</label>
-                                        <input class="form-control" type="text" readonly style="background-color: transparent;" value="<?= $data['rowId']['transaction_category'];?>">
+                                        <input class="form-control" type="text" readonly style="background-color: transparent;" value="<?= $data['rowId']['transaction_category']; ?>">
                                     </div> -->
 
                                 </form>
@@ -106,12 +106,13 @@
 
                         <div class="card" style="color: black; border:none;">
                             <div class="card-body">
-                                
+
                                 <form>
-                                <div class="form-group">
+                                    <div class="form-group">
                                         <label>Invoice#</label>
                                         <input type="text" readonly style="background-color: transparent;" class="form-control" value="<?= $data['rowId']['transaction_invoice_code']; ?>">
-                                    </div> <div class="form-group">
+                                    </div>
+                                    <div class="form-group">
                                         <label>Tanggal</label>
                                         <?php
                                         $datetime = explode(' ', $data['rowId']['transaction_date']);
@@ -162,39 +163,43 @@
                                         <label>Biaya</label>
                                         <input type="text" class="form-control" style="background-color: transparent;" value="Rp <?= $data['rowId']['transaction_pay_total']; ?>,-" readonly>
                                     </div>
-                                <?php 
-                        
-                        if($data['rowId']['transaction_category'] == 'Online'){
-                            if($data['rowId']['transaction_status'] != 'Menunggu Konfirmasi' ){
-                                ?>
-                                        <div class="form-group">
-                                        <label>Metode Pembayaran</label>
-                                        <input type="text" class="form-control" style="background-color: transparent;" value="<?= $data['rowId']['transaction_method']; ?>" readonly>
-                                    </div>
                                     <?php
-                            }
-                          
-                          
-                        } else {
-                            if($data['rowId']['transaction_status'] != 'Menunggu Konfirmasi' ){
-                                ?>
-                                <div class="form-group">
-                                <label>Metode Pembayaran</label>
-                                <input type="text" class="form-control" style="background-color: transparent;" value="<?= $data['rowId']['transaction_method']; ?>" readonly>
-                                </div>
-                                <?php
-                            }
-                        }
-                        
-                        ?>    
-                                
 
-                                   
-                                    
+                                    if ($data['rowId']['transaction_category'] == 'Online') {
+                                        if ($data['rowId']['transaction_status'] == 'Sedang Proses') {
+                                    ?>
+                                            <div class="form-group">
+                                                <label>Metode Pembayaran</label>
+                                                <input type="text" class="form-control" value="<?= $data['rowId']['transaction_method']; ?>" readonly>
+                                            </div>
+                                        <?php
+                                        }
+                                    } else {
+                                        if ($data['rowId']['transaction_status'] == 'Sedang Proses') {
+                                        ?>
+                                            <div class="form-group">
+                                                <label>Metode Pembayaran <span style="color: red;">*</span></label>
+                                                <select class="form-control" id="menu_id" name="menu_id" required>
+                                                    <option value="">Pilih Metode</option>
+                                                    <option value="Bayar di Tempat">Bayar di Tempat</option>
+                                                    <option value="Dompet Digital">Dompet Digital</option>
 
-                                    
 
-                             
+                                                </select>
+                                            </div>
+                                    <?php
+                                        }
+                                    }
+
+                                    ?>
+
+
+
+
+
+
+
+
 
 
                                 </form>
@@ -217,8 +222,15 @@
                         <h2>Daftar Menu Pesanan</h2>
                     </div>
                     <div class="col  d-flex justify-content-end">
-                        <button class="btn btn-lg btn-success addOrder" type="button" style="margin-left: 2%; border-radius: 10px;" data-toggle="modal" data-target="#formModal"><i class="bi bi-plus"></i> Tambah
-                            Baru</button>
+                        <?php
+                        if ($data['rowId']['transaction_status'] != 'Sedang Proses') {
+                        ?>
+                            <button class="btn btn-lg btn-success addOrder" type="button" style="margin-left: 2%; border-radius: 10px;" data-toggle="modal" data-target="#formModal"><i class="bi bi-plus"></i> Tambah
+                                Baru</button>
+                        <?php
+                        }
+                        ?>
+
                     </div>
 
                     <div style="overflow-x:auto;">
@@ -232,7 +244,14 @@
                                     <th scope="col">Harga</th>
                                     <th scope="col">Jumlah</th>
                                     <th scope="col">Subtotal</th>
-                                    <th scope="col">Aksi</th>
+                                   
+                                    <?php
+                                    if ($data['rowId']['transaction_status'] != 'Sedang Proses') {
+                                    ?>
+                                         <th scope="col">Aksi</th>
+                                    <?php
+                                    }
+                                    ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -250,21 +269,29 @@
                                             <td><?= 'Rp ' . $row['menu_price'] . ',-'; ?></td>
                                             <td><?= $row['transaction_detail_qty'] . ' porsi'; ?></td>
                                             <td><?= 'Rp ' . $row['transaction_detail_price_total'] . ',-'; ?></td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Select
-                                                    </a>
+                                            <?php
+                                            if ($data['rowId']['transaction_status'] != 'Sedang Proses') {
+                                            ?>
+                                                <td>
+                                                    <div class="dropdown">
 
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Select
+                                                        </a>
 
-                                                        <a class="dropdown-item" href="<?= BASEURL; ?>/transaction/delete_detail/<?= $row['transaction_detail_id']; ?>" onclick="return confirm('yakin data <?= $row['menu_name']; ?> akan dihapus?')">Hapus</a>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-                                                        <!-- <a class="dropdown-item edituser" href="<?= BASEURL; ?>/user/edit/<?= $row['user_id']; ?>" data-toggle="modal" data-target="#formModal" data-id="<?= $row['user_id']; ?>">ubah</a> -->
+                                                            <a class="dropdown-item" href="<?= BASEURL; ?>/transaction/delete_detail/<?= $row['transaction_detail_id']; ?>" onclick="return confirm('yakin data <?= $row['menu_name']; ?> akan dihapus?')">Hapus</a>
 
+                                                            <!-- <a class="dropdown-item edituser" href="<?= BASEURL; ?>/user/edit/<?= $row['user_id']; ?>" data-toggle="modal" data-target="#formModal" data-id="<?= $row['user_id']; ?>">ubah</a> -->
+
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
+                                                </td>
+                                            <?php
+                                            }
+                                            ?>
+
                                         </tr>
 
                                     <?php
@@ -306,7 +333,7 @@
 
                         <div class="modal-body" id="process" style="padding-right: 10%; padding-left: 10%;" style="display:none">
 
-                            <form method="post" action="<?= BASEURL;?>/transaction/confirm/<?= $data['rowId']['transaction_id'];?>">
+                            <form method="post" action="<?= BASEURL; ?>/transaction/confirm/<?= $data['rowId']['transaction_id']; ?>">
                                 <div class="row">
                                     <h1 id="title">Apakah Pesanan ini bersedia untuk diproses ke Pembayaran? </h1>
                                     <h3 id="subtitle">Pastikan Pesanan pembeli dalam keadaan siap untuk diantar ke Pelanggan. </h3>

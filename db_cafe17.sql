@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 07 Jan 2022 pada 11.22
+-- Generation Time: 11 Jan 2022 pada 17.27
 -- Versi Server: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -147,17 +147,17 @@ CREATE TABLE `t_transaction` (
   `transaction_category` enum('Online','Offline') NOT NULL,
   `transaction_customer_name` text NOT NULL,
   `transaction_customer_address` text NOT NULL,
-  `transaction_customer_phone_number` char(20) NOT NULL
+  `transaction_customer_phone_number` char(20) NOT NULL,
+  `transaction_image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `t_transaction`
 --
 
-INSERT INTO `t_transaction` (`transaction_id`, `transaction_date`, `transaction_invoice_code`, `user_id`, `transaction_pay_total`, `transaction_status`, `transaction_method`, `transaction_category`, `transaction_customer_name`, `transaction_customer_address`, `transaction_customer_phone_number`) VALUES
-(20, '2022-01-06 10:52:50', 'CAFE17PWT/20220103/INV001', 15, 12000, 'Menunggu Pembayaran', '', 'Online', 'Nazmiu', 'Dukuhwaluh', '085786625255'),
-(21, '2022-01-06 17:56:15', 'CAFE17PWT/20220104/INV002', 15, 12000, 'Menunggu Pembayaran', '', 'Online', 'Nazmiu', 'Dukuhwaluh', '085786625255'),
-(23, '2022-01-06 18:04:49', 'CAFE17PWT/20220106/INV003', 15, 12000, 'Menunggu Konfirmasi', '', 'Online', 'Nazmiu', 'Dukuhwaluh', '085786625255');
+INSERT INTO `t_transaction` (`transaction_id`, `transaction_date`, `transaction_invoice_code`, `user_id`, `transaction_pay_total`, `transaction_status`, `transaction_method`, `transaction_category`, `transaction_customer_name`, `transaction_customer_address`, `transaction_customer_phone_number`, `transaction_image`) VALUES
+(24, '2022-01-08 22:25:35', 'CAFE17PWT/20220108/INV001', 15, 11000, 'Menunggu Pembayaran', '', 'Online', 'Nazmiu', 'Dukuhwaluh', '085786625255', '0'),
+(25, '2022-01-11 23:16:08', 'CAFE17PWT/20220111/INV002', 0, 4000, 'Sedang Proses', '', 'Offline', 'Wildan', '08574883992', 'Banjar', '');
 
 -- --------------------------------------------------------
 
@@ -173,6 +173,14 @@ CREATE TABLE `t_transaction_detail` (
   `transaction_detail_price_total` int(11) NOT NULL,
   `transaction_detail_note` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `t_transaction_detail`
+--
+
+INSERT INTO `t_transaction_detail` (`transaction_detail_id`, `transaction_id`, `menu_id`, `transaction_detail_qty`, `transaction_detail_price_total`, `transaction_detail_note`) VALUES
+(1, 24, 37, 1, 11000, ''),
+(2, 25, 44, 1, 4000, '-');
 
 --
 -- Trigger `t_transaction_detail`
@@ -230,6 +238,7 @@ CREATE TABLE `v_transaction` (
 ,`transaction_customer_name` text
 ,`transaction_customer_phone_number` char(20)
 ,`transaction_customer_address` text
+,`transaction_image` text
 ,`transaction_detail_id` int(11)
 ,`transaction_detail_note` text
 ,`transaction_detail_qty` int(11)
@@ -263,6 +272,7 @@ CREATE TABLE `v_transaction_payment` (
 ,`transaction_customer_name` text
 ,`transaction_customer_phone_number` char(20)
 ,`transaction_customer_address` text
+,`transaction_image` text
 ,`transaction_detail_id` int(11)
 ,`transaction_detail_note` text
 ,`transaction_detail_qty` int(11)
@@ -293,7 +303,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_transaction`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_transaction`  AS  select `a`.`transaction_id` AS `transaction_id`,`a`.`transaction_invoice_code` AS `transaction_invoice_code`,`a`.`transaction_date` AS `transaction_date`,`a`.`user_id` AS `user_id`,`a`.`transaction_pay_total` AS `transaction_pay_total`,`a`.`transaction_method` AS `transaction_method`,`a`.`transaction_status` AS `transaction_status`,`a`.`transaction_category` AS `transaction_category`,`a`.`transaction_customer_name` AS `transaction_customer_name`,`a`.`transaction_customer_phone_number` AS `transaction_customer_phone_number`,`a`.`transaction_customer_address` AS `transaction_customer_address`,`b`.`transaction_detail_id` AS `transaction_detail_id`,`b`.`transaction_detail_note` AS `transaction_detail_note`,`b`.`transaction_detail_qty` AS `transaction_detail_qty`,`b`.`transaction_detail_price_total` AS `transaction_detail_price_total`,`c`.`user_name` AS `user_name`,`c`.`user_address` AS `user_address`,`c`.`user_phone_number` AS `user_phone_number`,`c`.`user_email` AS `user_email`,`d`.`menu_id` AS `menu_id`,`d`.`menu_code` AS `menu_code`,`d`.`menu_name` AS `menu_name`,`d`.`menu_image` AS `menu_image`,`d`.`menu_price` AS `menu_price` from (((`t_transaction` `a` left join `t_transaction_detail` `b` on((`b`.`transaction_id` = `a`.`transaction_id`))) left join `m_user` `c` on((`c`.`user_id` = `a`.`user_id`))) left join `m_menu` `d` on((`d`.`menu_id` = `b`.`menu_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_transaction`  AS  select `a`.`transaction_id` AS `transaction_id`,`a`.`transaction_invoice_code` AS `transaction_invoice_code`,`a`.`transaction_date` AS `transaction_date`,`a`.`user_id` AS `user_id`,`a`.`transaction_pay_total` AS `transaction_pay_total`,`a`.`transaction_method` AS `transaction_method`,`a`.`transaction_status` AS `transaction_status`,`a`.`transaction_category` AS `transaction_category`,`a`.`transaction_customer_name` AS `transaction_customer_name`,`a`.`transaction_customer_phone_number` AS `transaction_customer_phone_number`,`a`.`transaction_customer_address` AS `transaction_customer_address`,`a`.`transaction_image` AS `transaction_image`,`b`.`transaction_detail_id` AS `transaction_detail_id`,`b`.`transaction_detail_note` AS `transaction_detail_note`,`b`.`transaction_detail_qty` AS `transaction_detail_qty`,`b`.`transaction_detail_price_total` AS `transaction_detail_price_total`,`c`.`user_name` AS `user_name`,`c`.`user_address` AS `user_address`,`c`.`user_phone_number` AS `user_phone_number`,`c`.`user_email` AS `user_email`,`d`.`menu_id` AS `menu_id`,`d`.`menu_code` AS `menu_code`,`d`.`menu_name` AS `menu_name`,`d`.`menu_image` AS `menu_image`,`d`.`menu_price` AS `menu_price` from (((`t_transaction` `a` left join `t_transaction_detail` `b` on((`b`.`transaction_id` = `a`.`transaction_id`))) left join `m_user` `c` on((`c`.`user_id` = `a`.`user_id`))) left join `m_menu` `d` on((`d`.`menu_id` = `b`.`menu_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -302,7 +312,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_transaction_payment`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_transaction_payment`  AS  select `a`.`transaction_id` AS `transaction_id`,`a`.`transaction_invoice_code` AS `transaction_invoice_code`,`a`.`transaction_date` AS `transaction_date`,`a`.`user_id` AS `user_id`,`a`.`transaction_pay_total` AS `transaction_pay_total`,`a`.`transaction_method` AS `transaction_method`,`a`.`transaction_status` AS `transaction_status`,`a`.`transaction_category` AS `transaction_category`,`a`.`transaction_customer_name` AS `transaction_customer_name`,`a`.`transaction_customer_phone_number` AS `transaction_customer_phone_number`,`a`.`transaction_customer_address` AS `transaction_customer_address`,`b`.`transaction_detail_id` AS `transaction_detail_id`,`b`.`transaction_detail_note` AS `transaction_detail_note`,`b`.`transaction_detail_qty` AS `transaction_detail_qty`,`b`.`transaction_detail_price_total` AS `transaction_detail_price_total`,`c`.`user_name` AS `user_name`,`c`.`user_address` AS `user_address`,`c`.`user_phone_number` AS `user_phone_number`,`d`.`menu_id` AS `menu_id`,`d`.`menu_name` AS `menu_name`,`d`.`menu_image` AS `menu_image`,`d`.`menu_price` AS `menu_price`,count(`b`.`transaction_detail_id`) AS `transaction_qty_total` from (((`t_transaction` `a` left join `t_transaction_detail` `b` on((`b`.`transaction_id` = `a`.`transaction_id`))) left join `m_user` `c` on((`c`.`user_id` = `a`.`user_id`))) left join `m_menu` `d` on((`d`.`menu_id` = `b`.`menu_id`))) group by `a`.`transaction_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_transaction_payment`  AS  select `a`.`transaction_id` AS `transaction_id`,`a`.`transaction_invoice_code` AS `transaction_invoice_code`,`a`.`transaction_date` AS `transaction_date`,`a`.`user_id` AS `user_id`,`a`.`transaction_pay_total` AS `transaction_pay_total`,`a`.`transaction_method` AS `transaction_method`,`a`.`transaction_status` AS `transaction_status`,`a`.`transaction_category` AS `transaction_category`,`a`.`transaction_customer_name` AS `transaction_customer_name`,`a`.`transaction_customer_phone_number` AS `transaction_customer_phone_number`,`a`.`transaction_customer_address` AS `transaction_customer_address`,`a`.`transaction_image` AS `transaction_image`,`b`.`transaction_detail_id` AS `transaction_detail_id`,`b`.`transaction_detail_note` AS `transaction_detail_note`,`b`.`transaction_detail_qty` AS `transaction_detail_qty`,`b`.`transaction_detail_price_total` AS `transaction_detail_price_total`,`c`.`user_name` AS `user_name`,`c`.`user_address` AS `user_address`,`c`.`user_phone_number` AS `user_phone_number`,`d`.`menu_id` AS `menu_id`,`d`.`menu_name` AS `menu_name`,`d`.`menu_image` AS `menu_image`,`d`.`menu_price` AS `menu_price`,count(`b`.`transaction_detail_id`) AS `transaction_qty_total` from (((`t_transaction` `a` left join `t_transaction_detail` `b` on((`b`.`transaction_id` = `a`.`transaction_id`))) left join `m_user` `c` on((`c`.`user_id` = `a`.`user_id`))) left join `m_menu` `d` on((`d`.`menu_id` = `b`.`menu_id`))) group by `a`.`transaction_id` ;
 
 --
 -- Indexes for dumped tables
@@ -376,12 +386,12 @@ ALTER TABLE `m_user`
 -- AUTO_INCREMENT for table `t_transaction`
 --
 ALTER TABLE `t_transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `t_transaction_detail`
 --
 ALTER TABLE `t_transaction_detail`
-  MODIFY `transaction_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `transaction_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --

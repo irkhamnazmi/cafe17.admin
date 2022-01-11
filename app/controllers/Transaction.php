@@ -182,7 +182,7 @@ class Transaction extends Controller{
             'transaction_id' => $id,
             'menu_id' => $_POST['menu_id'],
             'transaction_detail_qty' => $_POST['transaction_detail_qty'],
-            'transaction_detail_total_price' => $_POST['transaction_detail_total_price'],
+            'transaction_detail_price_total' => $_POST['transaction_detail_price_total'],
             'transaction_detail_note' => $_POST['transaction_detail_note']
         ];
         if($this->model('Transaction_model')->postInsertDetailRow($data)){
