@@ -1,5 +1,5 @@
 <!-- BASEURL FOR JS -->
-<script>var baseurl = "<? echo BASEURL ?>";</script>
+<script>var baseurl = "<?= BASEURL ?>";</script>
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5/dist/js/bootstrap.bundle.min.js"></script>
