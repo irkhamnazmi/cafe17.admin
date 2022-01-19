@@ -53,6 +53,7 @@
                 event.stopPropagation();
                 $('#editor-error').show();
               }
+              
               form.classList.add('was-validated');
                 break;
               case 'cashier': 
