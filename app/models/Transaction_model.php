@@ -15,7 +15,7 @@ class Transaction_model{
 
     public function getAllRow()
     {
-        $this->db->query('SELECT * FROM ' . $this->view_p);
+        $this->db->query('SELECT * FROM ' . $this->view_p . ' WHERE transaction_status != "Keranjang"');
         return $this->db->resultSet();
     }
     public function getMoneyIncomeRow()

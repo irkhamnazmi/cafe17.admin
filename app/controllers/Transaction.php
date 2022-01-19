@@ -89,14 +89,16 @@ class Transaction extends Controller{
             case 'Menunggu Konfirmasi':
                 $this->model('Transaction_model')->postDeleteAllDetailRow($id);
                 $this->model('Transaction_model')->postDeleteRow($id);
+                header('Location: ' . BASEURL . '/transaction');
                 break;
             case 'Menunggu Pembayaran':
                 $data = [
                     'transaction_status' => 'Menunggu Konfirmasi',
                     'transaction_id' => $id,
-
+                        
                 ];
                 $this->model('Transaction_model')->postUpdateRowByStatus($data);
+                echo '<script>history.back()</script>';
                 break;
             case 'Sedang Proses':
                 $data = [
@@ -105,13 +107,13 @@ class Transaction extends Controller{
 
                 ];
                 $this->model('Transaction_model')->postUpdateRowByStatus($data);
-               
+                echo '<script>history.back()</script>';
            
         }
         
        
-        echo json_encode('Success');
-        echo '<script>history.back()</script>';
+       
+       
     }
 
     // public function getinvoice(){

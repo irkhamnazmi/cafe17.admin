@@ -91,11 +91,6 @@
                                            <td>Rp <?= $row['transaction_pay_total'] ?>,-</td>
                                            <td><?php
                                                 switch ($row['transaction_status']) {
-                                                    case 'Keranjang';
-                                                ?>
-                                                       <div class="alert alert-light" style="max-width: 100%; text-align: center;"><?= $row['transaction_status']; ?></div>
-                                                   <?php
-                                                        break;
                                                     case 'Menunggu Konfirmasi';
                                                     ?>
                                                        <div class="alert alert-warning" style="max-width: 100%; text-align: center;"><?= $row['transaction_status']; ?></div>
