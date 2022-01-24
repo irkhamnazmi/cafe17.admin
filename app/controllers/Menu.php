@@ -86,47 +86,47 @@ class Menu extends Controller
 
     public function edit()
     {   
-        var_dump($_FILES["menu_image"]);    
-        // if (isset($_FILES["menu_image"])) {
-        //     $target_dir = BASEDIRECTORY.'/uploads/images/';
-        //     $file_name = basename($_FILES["menu_image"]["name"]);
-        //     $target_file = $target_dir . $file_name;
-        //     // $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        //     // $check = getimagesize($_FILES["menu_image"]["tmp_name"]);
-        //     $upload = move_uploaded_file($_FILES["menu_image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $target_file);
-        //     if ($upload == false) {
+        // var_dump($_FILES["menu_image"]);    
+        if (empty($_FILES["menu_image"]["error"]) != 0 ) {
+            $target_dir = BASEDIRECTORY.'/uploads/images/';
+            $file_name = basename($_FILES["menu_image"]["name"]);
+            $target_file = $target_dir . $file_name;
+            // $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            // $check = getimagesize($_FILES["menu_image"]["tmp_name"]);
+            $upload = move_uploaded_file($_FILES["menu_image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $target_file);
+            if ($upload == false) {
 
-        //         // Flasher::setFlash('Foto gagal', 'ditambahkan', 'danger');
-        //         // header('Location: ' . BASEURL . '/menu');
-        //         // exit;
-        //         var_dump($upload);
-        //     } else {
-        //         $menu_image = $file_name;
-        //     }
-        // }else{
-        //     $menu_image = $_POST['txt_image'];
-        // }
+                // Flasher::setFlash('Foto gagal', 'ditambahkan', 'danger');
+                // header('Location: ' . BASEURL . '/menu');
+                // exit;
+                var_dump($upload);
+            } else {
+                $menu_image = $file_name;
+            }
+        }else{
+            $menu_image = $_POST['txt_image'];
+        }
        
-        // $data = [
-        //     'menu_id' => $_POST['menu_id'],
-        //     'menu_name' => $_POST['menu_name'],
-        //     'menu_category' => $_POST['menu_category'],
-        //     'menu_description' => $_POST['menu_description'],
-        //     'menu_price' => $_POST['menu_price'],
-        //     'menu_image' => $menu_image
+        $data = [
+            'menu_id' => $_POST['menu_id'],
+            'menu_name' => $_POST['menu_name'],
+            'menu_category' => $_POST['menu_category'],
+            'menu_description' => $_POST['menu_description'],
+            'menu_price' => $_POST['menu_price'],
+            'menu_image' => $menu_image
 
-        // ];
+        ];
        
        
-        // if ($this->model('Menu_model')->edit($data) > 0) {
-        //     Flasher::setFlash('Data berhasil', 'diubah', 'success');
-        //     header('Location: ' . BASEURL . '/menu');
-        //     exit;
-        // } else {
-        //     Flasher::setFlash('Data Batal', 'diubah', 'warning');
-        //     header('Location: ' . BASEURL . '/menu');
-        //     exit;
-        // }
+        if ($this->model('Menu_model')->edit($data) > 0) {
+            Flasher::setFlash('Data berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/menu');
+            exit;
+        } else {
+            Flasher::setFlash('Data Batal', 'diubah', 'warning');
+            header('Location: ' . BASEURL . '/menu');
+            exit;
+        }
     }
 
     public function delete($id)
