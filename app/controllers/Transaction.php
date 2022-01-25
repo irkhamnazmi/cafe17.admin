@@ -101,11 +101,17 @@ class Transaction extends Controller{
                 echo '<script>history.back()</script>';
                 break;
             case 'Sedang Proses':
+                $row  = $this->model('Transaction_model')->getRowById($id);
+                $path = $_SERVER['DOCUMENT_ROOT'].BASEDIRECTORY.'/uploads/images/'.$row['transaction_image'];
+                if (file_exists($path)) {
+                    unlink($path);    
+                } 
                 $data = [
                     'transaction_status' => 'Menunggu Pembayaran',
-                    'transaction_id' => $id
+                    'transaction_id' => $row['transaction_id']
 
                 ];
+             
                 $this->model('Transaction_model')->postUpdateRowByStatus($data);
                 echo '<script>history.back()</script>';
            

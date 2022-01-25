@@ -101,7 +101,12 @@ class Menu extends Controller
                 // exit;
                 var_dump($upload);
             } else {
-                $menu_image = $file_name;
+                
+                $path = $_SERVER['DOCUMENT_ROOT'].BASEDIRECTORY.'/uploads/images/'.$_POST['txt_image'];
+                if (file_exists($path)) {
+                    unlink($path);    
+                } 
+                $menu_image = $file_name;     
             }
         }else{
             $menu_image = $_POST['txt_image'];
@@ -132,10 +137,17 @@ class Menu extends Controller
     public function delete($id)
     {
         // var_dump($_POST);
-        if ($this->model('Menu_model')->delete($id) > 0) {
+        $row  = $this->model('Menu_model')->getRowById($id);
+        $path = $_SERVER['DOCUMENT_ROOT'].BASEDIRECTORY.'/uploads/images/'.$row['menu_image'];
+                if (file_exists($path)) {
+                    unlink($path);    
+         } 
+        if ($this->model('Menu_model')->delete($row['menu_id']) > 0) {
             Flasher::setFlash('Data berhasil', 'dihapus', 'success');
             header('Location: ' . BASEURL . '/menu');
             exit;
+
+           
         } else {
             Flasher::setFlash('Data gagal', 'dihapus', 'danger');
             header('Location: ' . BASEURL . '/menu');
