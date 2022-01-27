@@ -87,28 +87,31 @@ class Transaction extends Controller{
         $x = $this->model('Transaction_model')->getSingleRowById($id);
         switch($x['transaction_status']){
             case 'Menunggu Konfirmasi':
-                $this->model('Transaction_model')->postDeleteAllDetailRow($id);
-                $this->model('Transaction_model')->postDeleteRow($id);
+                $this->model('Transaction_model')->postDeleteAllDetailRow($x['transaction_id']);
+                $this->model('Transaction_model')->postDeleteRow($x['transaction_id']);
                 header('Location: ' . BASEURL . '/transaction');
                 break;
             case 'Menunggu Pembayaran':
                 $data = [
                     'transaction_status' => 'Menunggu Konfirmasi',
-                    'transaction_id' => $id,
+                    'transaction_id' => $x['transaction_id'],
                         
                 ];
                 $this->model('Transaction_model')->postUpdateRowByStatus($data);
                 echo '<script>history.back()</script>';
                 break;
             case 'Sedang Proses':
-                $row  = $this->model('Transaction_model')->getRowById($id);
-                $path = $_SERVER['DOCUMENT_ROOT'].BASEDIRECTORY.'/uploads/images/'.$row['transaction_image'];
+               if(!empty($x['transaction_image'])){
+                $path = $_SERVER['DOCUMENT_ROOT'].BASEDIRECTORY.'/uploads/transaction/images/'.$x['transaction_image'];
                 if (file_exists($path)) {
                     unlink($path);    
                 } 
+               }
+            
+           
                 $data = [
                     'transaction_status' => 'Menunggu Pembayaran',
-                    'transaction_id' => $row['transaction_id']
+                    'transaction_id' => $x['transaction_id']
 
                 ];
              

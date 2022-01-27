@@ -339,6 +339,16 @@
                                     <h3 id="subtitle">Pastikan Pesanan pembeli dalam keadaan siap untuk diantar ke Pelanggan. </h3>
 
                                 </div>
+                              
+                                <div class="modal-body justify-content-center" id="image">
+                                <?php
+                                if ($data['rowId']['transaction_status'] != "Dompet Digital") {
+                                ?>
+                                   <img src="<?= BASEURL.'/uploads/transaction/images/'. $data['rowId']['transaction_image']?>" />
+                                <?php
+                                }
+                                ?>
+                                </div>
                                 <div class="modal-footer justify-content-center">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Nanti</button>
                                     <button id="btn" type="submit" class="btn btn-lg btn-success">Konfirmasi</button>

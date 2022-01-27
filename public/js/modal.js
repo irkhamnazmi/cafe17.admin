@@ -203,16 +203,19 @@ $('.confirm').on('click',function(){
                     
                     $('#subtitle').html('Pastikan Pesanan pembeli dalam keadaan siap untuk diantar ke Pelanggan.');
                     $('#btn').html('Konfirmasi');
+                    $('#image').css('display','none');
                     break;
                 case 'Menunggu Pembayaran':
                     if(data.transaction_category == 'Online'){
                         $('#subtitle').html('Hubungi pelanggan untuk segera melakukan proses pembayaran.');
                         $('#btn').css('display','none');
+                        $('#image').css('display','none');
                         
                     }else{
                         $('#subtitle').html('Pastikan pelanggan siap melakukan proses pembayaran.');
                         $('#btn').css('display','block');
                         $('#btn').html('Bayar');
+                        $('#image').css('display','none');
                     }    
                     
                     break;
@@ -221,6 +224,7 @@ $('.confirm').on('click',function(){
                     $('#subtitle').html('Pastikan Kasir sudah menerima pembayaran dari pelanggan.');
                     $('#btn').css('display','block');
                     $('#btn').html('Lunas');
+                    $('#image').css('display','block');
               
             }
 
@@ -256,14 +260,17 @@ $('.delete').on('click',function(){
                 case 'Menunggu Konfirmasi':
                     
                     $('#subtitle').html('Seluruh Data Pesanan ini akan hilang.');
+                    $('#image').css('display','none');
                     break;
                 case 'Menunggu Pembayaran':
                  
                     $('#subtitle').html('Status Pesanan akan diubah menjadi "Menunggu Konfirmasi".');
+                    $('#image').css('display','none');
                     break;
                 case 'Sedang Proses':
                    
                     $('#subtitle').html('Status Pesanan akan diubah menjadi "Menunggu Pembayaran".');
+                    $('#image').css('display','none');
               
             }
           
