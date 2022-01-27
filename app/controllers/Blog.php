@@ -38,6 +38,10 @@ class Blog extends Controller{
                 exit;
                 var_dump($upload);
             } else {
+                $path = $_SERVER['DOCUMENT_ROOT'].BASEDIRECTORY.'/uploads/blog/images/'.$_POST['txt_image'];
+                if (file_exists($path)) {
+                    unlink($path);    
+                } 
                 $blog_image = $file_name;
             }
         }
@@ -123,7 +127,7 @@ class Blog extends Controller{
         // var_dump($_POST);
         if ($this->model('Blog_model')->delete($id) > 0) {
             $row  = $this->model('Blog_model')->getRowById($id);
-            $path = $_SERVER['DOCUMENT_ROOT'].BASEDIRECTORY.'/uploads/blog/'.$row['blog_image'];
+            $path = $_SERVER['DOCUMENT_ROOT'].BASEDIRECTORY.'/uploads/blog/images/'.$row['blog_image'];
             if (file_exists($path)) {
                 unlink($path);    
             } 
