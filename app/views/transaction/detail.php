@@ -342,7 +342,7 @@
                               
                                 <div class="modal-body justify-content-center" id="image">
                                 <?php
-                                if ($data['rowId']['transaction_status'] != "Dompet Digital") {
+                                if ($data['rowId']['transaction_status'] == "Dompet Digital") {
                                 ?>
                                    <img src="<?= BASEURL.'/uploads/transaction/images/'. $data['rowId']['transaction_image']?>" />
                                 <?php

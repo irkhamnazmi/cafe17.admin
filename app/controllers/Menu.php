@@ -101,12 +101,14 @@ class Menu extends Controller
                 // exit;
                 var_dump($upload);
             } else {
-                
-                $path = $_SERVER['DOCUMENT_ROOT'].BASEDIRECTORY.'/uploads/images/'.$_POST['txt_image'];
-                if (file_exists($path)) {
-                    unlink($path);    
-                } 
-                $menu_image = $file_name;     
+             
+                    $path = $_SERVER['DOCUMENT_ROOT'].BASEDIRECTORY.'/uploads/images/'.$_POST['txt_image'];
+                    if (file_exists($path)) {
+                        unlink($path);    
+                    } $menu_image = $file_name;  
+           
+                    var_dump($upload);
+                  
             }
         }else{
             $menu_image = $_POST['txt_image'];
