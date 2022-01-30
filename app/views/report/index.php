@@ -12,12 +12,13 @@
                         
                         <div class="card" style="color: black; border-radius: 10px;">
                             <div class="card-body">
-                                <form>
+                                <form novalidate action="<?= BASEURL; ?>/report/by_date" method="POST">
                                     <div class="form-group">
                                         <label id="data">Data</label>
                                         <select id="data" class="form-control custom-select">
-                                            <option selected>Pelanggan</option>
-                                            <option>Transaksi</option>
+                                            <option value="">Pilih Data</option>
+                                            <option value="Pelanggan">Pelanggan</option>
+                                            <option value="Transaksi">Transaksi</option>
                                           </select>
                                     </div>
 
@@ -26,7 +27,7 @@
                                         <div class="row">
                                             <div class="col-2">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" onclick="clickDate()" checked>
                                                     <label class="form-check-label" for="exampleRadios1">
                                                       Tanggal
                                                     </label>
@@ -35,7 +36,7 @@
                                             </div>
                                             <div class="col-2">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"  onclick="clickMonth()">
                                                     <label class="form-check-label" for="exampleRadios2">
                                                       Bulan
                                                     </label>
@@ -44,7 +45,7 @@
 
                                             <div class="col-2">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3"  onclick="clickYear()" >
                                                     <label class="form-check-label" for="exampleRadios3">
                                                       Tahun
                                                     </label>
@@ -59,8 +60,8 @@
 
                                     <div class="form-group">
                                         <label>Tanggal</label>
-                                        <input type="text" class="form-control" data-date-format="dd/mm/yyyy"
-                                        id="datepicker">
+                                        <input type="date" class="form-control" id="date" data-date-format="dd/mm/yyyy"
+                                        >
                                     </div>
                                    
                                 

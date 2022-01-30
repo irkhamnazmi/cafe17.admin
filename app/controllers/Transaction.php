@@ -74,8 +74,14 @@ class Transaction extends Controller{
                     'transaction_id' => $id
 
                 ];
-                $this->model('Transaction_model')->postUpdateRowByStatus($data);
-                echo '<script>history.back()</script>';
+                if($this->model('Transaction_model')->postUpdateRowByStatus($data)){
+                    echo '<script>history.back()</script>';
+                    $this->view('transaction/proof');
+                  
+
+                }
+
+               
            
         }
       
@@ -205,4 +211,6 @@ class Transaction extends Controller{
     public function getid(){
         echo json_encode($this->model('Transaction_model')->getSingleRowById($_POST['transaction_id']));
     }
+
+    
 }

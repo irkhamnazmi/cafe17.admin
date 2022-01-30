@@ -14,3 +14,4 @@ define('BASEDIRECTORY', '/cafe17.admin/public');
 define('BASEURL', 'http://'.DB_HOST.BASEDIRECTORY);
 
 
+

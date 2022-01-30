@@ -36,14 +36,6 @@ $(document).ready(function () {
 });
 
 
-$('#datepicker').datepicker({
-  weekStart: 1,
-  daysOfWeekHighlighted: "6,0",
-  autoclose: true,
-  todayHighlight: true,
-});
-$('#datepicker').datepicker("setDate", new Date());
-
 
 
 function myFunction() {
@@ -105,6 +97,15 @@ function calculate(qty){
 
 }
 
+function clickDate(){
+  $('#date').attr('data-date-format', 'dd/mm/yyyy'); 
+}
+function clickMonth(){
+  $('#date').attr('data-date-format', 'mm'); 
+}
+function clickYear(){
+  $('#date').attr('data-date-format', 'yyyy'); 
+}
 
 
 
