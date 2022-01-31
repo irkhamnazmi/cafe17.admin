@@ -27,7 +27,7 @@
                                         <div class="row">
                                             <div class="col-2">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" onclick="clickDate()" checked>
+                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="date" onclick="checkDate()" checked>
                                                     <label class="form-check-label" for="exampleRadios1">
                                                       Tanggal
                                                     </label>
@@ -36,7 +36,7 @@
                                             </div>
                                             <div class="col-2">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"  onclick="clickMonth()">
+                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="month"  onclick="checkMonth()">
                                                     <label class="form-check-label" for="exampleRadios2">
                                                       Bulan
                                                     </label>
@@ -45,7 +45,7 @@
 
                                             <div class="col-2">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3"  onclick="clickYear()" >
+                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="year"  onclick="checkYear()" >
                                                     <label class="form-check-label" for="exampleRadios3">
                                                       Tahun
                                                     </label>
@@ -57,11 +57,46 @@
                                       
                                       
                                     </div>
-
+                                    <div class="row" id="datepicker">
+                                    <div class="col">  
                                     <div class="form-group">
-                                        <label>Tanggal</label>
-                                        <input type="date" class="form-control" id="date" data-date-format="dd/mm/yyyy"
-                                        >
+                                        <label id="dateLabel">Tanggal</label>
+                                        <input type="date" class="form-control" >   
+                                     </div>
+                                    </div>
+                                    </div>
+                                       
+                                        <div class="row" style="display:none;" id="selectMonth" >
+                                        <div class="col-2">
+                                        <div class="form-group">
+                                        <select class="form-control custom-select" >
+                                            <option value="">Pilih Bulan</option>
+                                            <option value="1">Januari</option>
+                                            <option value="2">Februari</option>
+                                        </select>
+                                        </div>
+                                        </div>
+                                        <div class="col-2">
+                                        <div class="form-group">
+                                        <select class="form-control custom-select" >
+                                            <option value="">Pilih Tahun</option>
+                                            <option value="1">Januari</option>
+                                            <option value="2">Februari</option>
+                                        </select>
+                                        </div>
+                                        </div>
+                                        </div>
+
+                                        <div class="row" id="selectYear"  style="display:none;">
+                                            <div class="col">
+                                            <div class="form-group">
+                                            <select  class="form-control custom-select">
+                                            <option value="">Pilih Tahun</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                        </select>
+                                            </div>
+                                        </div>
                                     </div>
                                    
                                 

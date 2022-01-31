@@ -97,14 +97,24 @@ function calculate(qty){
 
 }
 
-function clickDate(){
-  $('#date').attr('data-date-format', 'dd/mm/yyyy'); 
+function checkDate(){
+  $('#dateLabel').text('Tanggal');
+  $('#datepicker').css('display','block');
+  $('#selectMonth').css('display','none');
+  $('#selectYear').css('display','none');
+
 }
-function clickMonth(){
-  $('#date').attr('data-date-format', 'mm'); 
+function checkMonth(){
+  $('#dateLabel').text('Bulan');
+  $('#datepicker').css('display','none');
+  $('#selectMonth').css('display','block');
+  $('#selectYear').css('display','none');
 }
-function clickYear(){
-  $('#date').attr('data-date-format', 'yyyy'); 
+function checkYear(){
+  $('#dateLabel').text('Tahun');
+  $('#datepicker').css('display','none');
+  $('#selectMonth').css('display','none');
+  $('#selectYear').css('display','block');
 }
 
 
