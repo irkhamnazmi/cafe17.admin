@@ -64,7 +64,7 @@
                                         <input type="date" class="form-control" >   
                                      </div>
                                     </div>
-                                    </div>
+                                    
                                        
                                         <div class="row" style="display:none;" id="selectMonth" >
                                         <div class="col-2">
