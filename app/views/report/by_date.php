@@ -36,9 +36,9 @@
             <tr>
               <th scope="row">1</th>
               <td>30/1/22</td>
-              <td align="left">Irkham</td>
-              <td align="left">irkham.nazmi@gmail.com</td>
-              <td align="left">DK Karangdempul</td>
+              <td align="left">Wildan</td>
+              <td align="left">wildan@gmail.com</td>
+              <td align="left">Dukuhwaluh</td>
             </tr>
             
           </tbody>

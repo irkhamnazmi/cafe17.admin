@@ -57,46 +57,46 @@
                                       
                                       
                                     </div>
-                                    <div class="row" id="datepicker">
-                                    <div class="col">  
+
                                     <div class="form-group">
                                         <label id="dateLabel">Tanggal</label>
-                                        <input type="date" class="form-control" >   
-                                     </div>
-                                    </div>
-                                    
+                                        <div class="row" id="datepicker">
+                                            <div class="col-2">
+                                            <input type="date" class="form-control">
+                                            </div>
                                        
-                                        <div class="row" style="display:none;" id="selectMonth" >
-                                        <div class="col-2">
-                                        <div class="form-group">
-                                        <select class="form-control custom-select" >
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-2"  style="display:none;" id="selectMonth" >
+                                            <select class="form-control custom-select" >
                                             <option value="">Pilih Bulan</option>
-                                            <option value="1">Januari</option>
-                                            <option value="2">Februari</option>
+                                            <option value="01">Januari</option>
+                                            <option value="02">Februari</option>
+                                            <option value="03">Maret</option>
+                                            <option value="04">April</option>
+                                            <option value="05">Mei</option>
+                                            <option value="06">Juni</option>
+                                            <option value="07">Juli</option>
+                                            <option value="08">Agustus</option>
+                                            <option value="09">September</option>
+                                            <option value="10">Oktober</option>
+                                            <option value="11">November</option>
+                                            <option value="12">Desember</option>
                                         </select>
-                                        </div>
-                                        </div>
-                                        <div class="col-2">
-                                        <div class="form-group">
-                                        <select class="form-control custom-select" >
-                                            <option value="">Pilih Tahun</option>
-                                            <option value="1">Januari</option>
-                                            <option value="2">Februari</option>
-                                        </select>
-                                        </div>
-                                        </div>
-                                        </div>
 
-                                        <div class="row" id="selectYear"  style="display:none;">
-                                            <div class="col">
-                                            <div class="form-group">
-                                            <select  class="form-control custom-select">
+                                            </div>
+                                            <div class="col-2"  id="selectYear" style="display:none;">
+
+                                        <select  class="form-control custom-select">
                                             <option value="">Pilih Tahun</option>
                                             <option value="2021">2021</option>
                                             <option value="2022">2022</option>
                                         </select>
+                                      
                                             </div>
                                         </div>
+                                      
+                                       
                                     </div>
                                    
                                 

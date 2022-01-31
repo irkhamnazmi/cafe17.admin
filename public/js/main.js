@@ -108,7 +108,7 @@ function checkMonth(){
   $('#dateLabel').text('Bulan');
   $('#datepicker').css('display','none');
   $('#selectMonth').css('display','block');
-  $('#selectYear').css('display','none');
+  $('#selectYear').css('display','block');
 }
 function checkYear(){
   $('#dateLabel').text('Tahun');
