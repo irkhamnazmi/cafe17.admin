@@ -10,7 +10,7 @@ class Transaction extends Controller{
        
 
         $data = [
-            'judul' => $this->model('Asset_model')->getTitle(),
+          
             'page' =>  $this->page_name,
             'row' => $this->model('Transaction_model')->getAllRow()
             
@@ -21,12 +21,12 @@ class Transaction extends Controller{
         $this->view('template/navbar', $data);
         $this->view('transaction/index',$data);
         $this->view('template/footer');
+        unset($_SESSION['receipt_print']);
     }
 
     public function detail($id){
         $x = $this->model('Transaction_model')->getSingleRowById($id);
         $data = [
-            'judul' => $this->model('Asset_model')->getTitle(),
             'page' =>  $this->page_name,
             'status'=> $x['transaction_status'],
             'row' => $this->model('Transaction_model')->getRowById($x['transaction_id']),
@@ -210,6 +210,33 @@ class Transaction extends Controller{
 
     public function getid(){
         echo json_encode($this->model('Transaction_model')->getSingleRowById($_POST['transaction_id']));
+    }
+
+    public function receipt($id){
+       $data = [
+            'row' => $this->model('Transaction_model')->getRowById($id),
+            'rowId' => $this->model('Transaction_model')->getSingleRowById($id)
+       ];
+  
+
+       $_SESSION['receipt_print'] = [
+        'row' => $data['row'],
+        'rowId' => $data['rowId'],
+        'paper' => 'A8',
+        'title' => 'Struk_'.$data['rowId']['transaction_invoice_code']
+    ];
+
+    header('Location: ' . BASEURL . '/transaction/receipt_print');
+       
+      
+    }
+
+    public function receipt_print(){
+
+        $data = $_SESSION['receipt_print']; 
+        $this->view('template/header_dompdf', $data);
+        $this->view('transaction/receipt', $data);
+        $this->view('template/footer_dompdf', $data); 
     }
 
     

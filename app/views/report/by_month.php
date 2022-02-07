@@ -12,48 +12,47 @@
     </table>
 
     <table width="100%">
-        <tr>
-            <td><strong>Per Tanggal:</strong> <?php $datetime = explode(' ', $data['date']);
-                                                $date = explode('-', $datetime[0]);
-                                                switch ($date[1]) {
-                                                    case '01';
-                                                        $bulan = 'Januari';
-                                                        break;
-                                                    case '02';
-                                                        $bulan = 'Februari';
-                                                        break;
-                                                    case '03';
-                                                        $bulan = 'Maret';
-                                                        break;
-                                                    case '04';
-                                                        $bulan = 'April';
-                                                        break;
-                                                    case '05';
-                                                        $bulan = 'Mei';
-                                                        break;
-                                                    case '06';
-                                                        $bulan = 'Juni';
-                                                        break;
-                                                    case '07';
-                                                        $bulan = 'Juli';
-                                                        break;
-                                                    case '08';
-                                                        $bulan = 'Agustus';
-                                                        break;
-                                                    case '09';
-                                                        $bulan = 'September';
-                                                        break;
-                                                    case '10';
-                                                        $bulan = 'Oktober';
-                                                        break;
-                                                    case '11';
-                                                        $bulan = 'November';
-                                                        break;
-                                                    case '12';
-                                                        $bulan = 'Desember';
-                                                        break;
-                                                }
-                                                echo $date['2'] . ' ' . $bulan . ' ' . $date['0']; ?> </td>
+        <tr><?php
+            switch ($data['month']) {
+                case '01';
+                    $bulan = 'Januari';
+                    break;
+                case '02';
+                    $bulan = 'Februari';
+                    break;
+                case '03';
+                    $bulan = 'Maret';
+                    break;
+                case '04';
+                    $bulan = 'April';
+                    break;
+                case '05';
+                    $bulan = 'Mei';
+                    break;
+                case '06';
+                    $bulan = 'Juni';
+                    break;
+                case '07';
+                    $bulan = 'Juli';
+                    break;
+                case '08';
+                    $bulan = 'Agustus';
+                    break;
+                case '09';
+                    $bulan = 'September';
+                    break;
+                case '10';
+                    $bulan = 'Oktober';
+                    break;
+                case '11';
+                    $bulan = 'November';
+                    break;
+                case '12';
+                    $bulan = 'Desember';
+                    break;
+            }
+            ?>
+            <td><strong>Per Bulan:</strong> <?= $bulan . ' ' . $data['year']; ?></td>
             <!-- <td><strong>To:</strong> Linblum - Barrio Comercial</td> -->
         </tr>
 
@@ -138,7 +137,7 @@
                     <tr>
                         <td colspan="4"></td>
                         <td align="right">Total Pelanggan</td>
-                        <td align="left"><?= $data['rowId']['user_all_count']; ?></td>
+                        <td align="left"><?= $data['rowId']['total']; ?></td>
                     </tr>
                 </tfoot>;
             <?php
@@ -232,6 +231,7 @@
                 break;
         }
         ?>
+
 
     </table>
     <br>

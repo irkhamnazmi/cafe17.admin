@@ -74,6 +74,51 @@
            
               form.classList.add('was-validated');
                 break;
+              case 'report': 
+              // var editorValue = CKEDITOR.instances.editor.getData();
+              // if(form.checkValidity() === false){
+              //   event.preventDefault();
+              //   event.stopPropagation();
+              //  }
+              var data =  $('#data').val();
+              var radioBtn =  document.querySelector( 'input[name="exampleRadios"]:checked');   
+              var date = $('#date').val();
+              var month = $('#month').val();
+              var year = $('#year').val();
+              if(data == ''){
+                event.preventDefault();
+                event.stopPropagation();
+              }  
+              if(radioBtn == 'date'){
+                if(date == ''){
+                  event.preventDefault();
+                  event.stopPropagation();
+                  $('#date').removeClass("form-control").addClass("form-control is-invalid");
+                  $('#date-error').text('Tanggal belum ditentukan');
+                }}
+      
+                else if(radioBtn == 'month'){
+                if(month == '' && year == ''){
+                  event.preventDefault();
+                  event.stopPropagation();
+                  $('#month').removeClass("form-control").addClass("form-control is-invalid");
+                  $('#year').removeClass("form-control").addClass("form-control is-invalid");
+                  $('#date-error').text('Bulan dan tahun belum ditentukan');
+                }    
+              }
+              else if(radioBtn == 'year'){
+                if(year == ''){
+                  event.preventDefault();
+                  event.stopPropagation();
+                  $('#year').removeClass("form-control").addClass("form-control is-invalid");
+                  $('#date-error').text('Tahun belum ditentukan');
+                }    
+              }
+
+
+           
+              form.classList.add('was-validated');
+                break;
           }
         
          

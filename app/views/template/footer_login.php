@@ -4,7 +4,7 @@
          <div class="container">
 
 
-             <p style="text-align: center;">© 2021 Cafe 17 Purwokerto</p>
+             <p style="text-align: center;"> <?= VERSION; ?></p>
 
 
          </div>

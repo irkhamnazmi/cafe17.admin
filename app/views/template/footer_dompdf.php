@@ -5,10 +5,8 @@
           ob_end_clean();
           $dompdf->loadHtml($page);
   
-         
-          $dompdf->setPaper('A4', 'potrait');
-  
-  
+          $dompdf->setPaper($data['paper'], 'potrait');
+
           // Render the HTML as PDF
           $dompdf->render();
           
@@ -16,5 +14,6 @@
          
   
           // Output the generated PDF to Browser
-          $dompdf->stream('report_by_date');
+          $kata = 'adfsdf';
+          $dompdf->stream($data['title']);
   

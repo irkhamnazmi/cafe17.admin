@@ -6,7 +6,7 @@ class Blog extends Controller{
     public function index(){
         
         $data = [
-            'judul' => $this->model('Asset_model')->getTitle(),
+           
             'page' => $this->page_name,
             'row' => $this->model('Blog_model')->getAllRow()
            

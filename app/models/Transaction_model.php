@@ -18,6 +18,7 @@ class Transaction_model{
         $this->db->query('SELECT * FROM ' . $this->view_p . ' WHERE transaction_status != "Keranjang"');
         return $this->db->resultSet();
     }
+   
     public function getMoneyIncomeRow()
     {
         $this->db->query('SELECT SUM(transaction_pay_total) AS total FROM ' . $this->table. ' WHERE transaction_status  = "Lunas" ');
@@ -58,6 +59,8 @@ class Transaction_model{
         $this->db->bind('transaction_invoice_code',$id);
         return $this->db->single();
     }
+
+ 
     
     public function postInsertRow($data)
     {

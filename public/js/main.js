@@ -97,11 +97,76 @@ function calculate(qty){
 
 }
 
+function selectData(){
+  var data = $('#data').val();
+  switch(data){
+    case "User" :
+     
+    //  console.log(data);
+     $.ajax({
+      url: baseurl + '/report/getuser_year',
+      data: {
+        user: data
+       
+      },
+      method: 'POST',
+      dataType: 'json',
+      success: function (result) {
+        // console.log(result);
+        var len = result.length;
+
+        $("#year").empty();
+        for( var i = 0; i<len; i++){
+           
+            var year = result[i]['user_year'];
+            
+            $("#year").append("<option value='"+year+"'>"+year+"</option>");
+
+        }
+        
+      }
+    });
+    break;
+    case "Transaction" :
+   
+    //  console.log(data);
+     $.ajax({
+      url: baseurl + '/report/gettransaction_year',
+      data: {
+        user: data
+       
+      },
+      method: 'POST',
+      dataType: 'json',
+      success: function (result) {
+        // console.log(result);
+        var len = result.length;
+
+        $("#year").empty();
+        for( var i = 0; i<len; i++){
+           
+            var year = result[i]['transaction_year'];
+            
+            $("#year").append("<option value='"+year+"'>"+year+"</option>");
+
+        }
+        
+      }
+    });
+    break;
+  }
+}
+
 function checkDate(){
   $('#dateLabel').text('Tanggal');
   $('#datepicker').css('display','block');
   $('#selectMonth').css('display','none');
   $('#selectYear').css('display','none');
+  $('#form').attr('action', baseurl+'/report/by_date');
+  $('#date').attr('required','');
+  $('#month').removeAttr('required');
+  $('#year').removeAttr('required');
+  console.log('Tanggal');
 
 }
 function checkMonth(){
@@ -109,17 +174,32 @@ function checkMonth(){
   $('#datepicker').css('display','none');
   $('#selectMonth').css('display','block');
   $('#selectYear').css('display','block');
+  $('#form').attr('action', baseurl+'/report/by_month');
+  $('#month').attr('required','');
+  $('#date').removeAttr('required');
+  $('#year').removeAttr('required');
+  console.log('Bulan');
+
+
+ 
 }
 function checkYear(){
   $('#dateLabel').text('Tahun');
   $('#datepicker').css('display','none');
   $('#selectMonth').css('display','none');
   $('#selectYear').css('display','block');
+  $('#form').attr('action', baseurl+'/report/by_year');
+  $('#year').attr('required','');
+  $('#date').removeAttr('required');
+  $('#month').removeAttr('required');
+  console.log('Tahun');
 }
 
 
 
 
-
-
+// function datePicker(){
+//   $('#date').format('dd/mm/yyyy') ;
+// console.log('haha');
+// }
 

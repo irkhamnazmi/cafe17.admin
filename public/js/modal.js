@@ -225,6 +225,8 @@ $('.confirm').on('click',function(){
                     $('#btn').css('display','block');
                     $('#btn').html('Lunas');
                     $('#image').css('display','block');
+                    break;
+                    
               
             }
 

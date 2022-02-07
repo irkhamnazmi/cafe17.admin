@@ -8,7 +8,7 @@
             // echo 'home/index';      
             
             $data = [
-                'judul' => $this->model('Asset_model')->getTitle(),
+               
                 'page' => $this->page_name,
                 'new_user'=> $this->model('User_model')->getNewRow(),
                 'money_income' => $this->model('Transaction_model')->getMoneyIncomeRow(),

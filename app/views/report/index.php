@@ -3,6 +3,7 @@
                 <div class="row">
                     <div class="col-4">
                         <h1 class="mt-4" style="margin-bottom: 5%;">Laporan</h1>
+                        <?php Flasher::flash() ?>
                     </div>
 
                 </div>
@@ -12,14 +13,18 @@
                         
                         <div class="card" style="color: black; border-radius: 10px;">
                             <div class="card-body">
-                                <form novalidate action="<?= BASEURL; ?>/report/by_date" method="POST">
+                                <form id="form" novalidate class="needs-validation" action="<?= BASEURL; ?>/report/by_date" method="POST">
+                                <span id="page" style="display: none;">report</span>
                                     <div class="form-group">
-                                        <label id="data">Data</label>
-                                        <select id="data" class="form-control custom-select">
+                                        <label for="data">Data</label>
+                                        <select id="data" class="form-control custom-select" onchange="selectData()" name="data" required>
                                             <option value="">Pilih Data</option>
-                                            <option value="Pelanggan">Pelanggan</option>
-                                            <option value="Transaksi">Transaksi</option>
+                                            <option value="User">Pelanggan</option>
+                                            <option value="Transaction">Transaksi</option>
                                           </select>
+                                          <div class="invalid-feedback">
+                                            Tentukan Data Laporan
+                                    </div>
                                     </div>
 
                                     <div class="form-group">
@@ -62,13 +67,14 @@
                                         <label id="dateLabel">Tanggal</label>
                                         <div class="row" id="datepicker">
                                             <div class="col-2">
-                                            <input type="date" class="form-control">
+                                            <input class="form-control" type="date" onfocus="(this.type='date')" placeholder="Date" onblur="(this.type='text')" name="date" id="date"/>
                                             </div>
+                                           
                                        
                                         </div>
                                         <div class="row">
                                             <div class="col-2"  style="display:none;" id="selectMonth" >
-                                            <select class="form-control custom-select" >
+                                            <select class="form-control custom-select" id="month" name="month">
                                             <option value="">Pilih Bulan</option>
                                             <option value="01">Januari</option>
                                             <option value="02">Februari</option>
@@ -87,15 +93,21 @@
                                             </div>
                                             <div class="col-2"  id="selectYear" style="display:none;">
 
-                                        <select  class="form-control custom-select">
+                                        <select  class="form-control custom-select" id="year" name="year">
                                             <option value="">Pilih Tahun</option>
-                                            <option value="2021">2021</option>
-                                            <option value="2022">2022</option>
+                                           
                                         </select>
                                       
                                             </div>
                                         </div>
-                                      
+                                        <div class="row">
+                                            <div class="col-2">
+                                            <div class="invalid-feedback" id="date-error">
+                                            Tentukan Tanggal
+                                            </div>
+                                            </div>
+                                        </div>
+                                       
                                        
                                     </div>
                                    
@@ -251,3 +263,4 @@
             </div>
 
         </div>
+        

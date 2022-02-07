@@ -6,8 +6,8 @@ class Account extends Controller{
       
 
         if(empty($_SESSION['cashier'])){
-            $data['judul'] = $this->model('Asset_model')->getTitle();
-            $this->view('template/header_login', $data);
+
+            $this->view('template/header_login');
             $this->view('account/index');
             $this->view('template/footer_login');
         } else{

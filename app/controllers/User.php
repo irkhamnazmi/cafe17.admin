@@ -8,7 +8,7 @@ class User extends Controller{
     public function index(){
       
         $data = [
-            'judul' => $this->model('Asset_model')->getTitle(),
+          
             'page' =>  $this->page_name,
             'row' => $this->model('User_model')->getAllRow()
         ];
@@ -33,6 +33,8 @@ class User extends Controller{
             exit;
         }
     }
+
+
 
 }
 

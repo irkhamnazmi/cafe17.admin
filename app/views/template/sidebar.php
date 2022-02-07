@@ -40,7 +40,7 @@
 
             <ul class="nav flex-column text-center" style=" position: absolute; bottom: 0;">
                 <li class="nav-item">
-                    <a class="nav-link" style="pointer-events: none;" href="#">© 2021 Cafe 17 Purwokerto</a>
+                    <a class="nav-link" style="pointer-events: none;" href="#"><?= VERSION; ?></a>
                 </li>
                
             </ul>

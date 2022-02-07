@@ -15,6 +15,7 @@ class User_model {
         return $this->db->resultSet();
     }
 
+
     public function delete($id){
         $query ="DELETE FROM ". $this->table ."
                 WHERE user_id = :user_id";

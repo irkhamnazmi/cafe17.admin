@@ -6,7 +6,7 @@ class Cashier extends Controller{
     public function index(){
       
         $data = [
-            'judul' => $this->model('Asset_model')->getTitle(),
+          
             'page' => $this->page_name,
             'row' => $this->model('Cashier_model')->getAllRow()
 

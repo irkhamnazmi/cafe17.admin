@@ -92,7 +92,7 @@
                                            <td><?php
                                                 switch ($row['transaction_status']) {
                                                     case 'Menunggu Konfirmasi';
-                                                    ?>
+                                                ?>
                                                        <div class="alert alert-warning" style="max-width: 100%; text-align: center;"><?= $row['transaction_status']; ?></div>
                                                    <?php
                                                         break;
@@ -121,19 +121,14 @@
                                                    </a>
 
                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                       <?php if ($row['transaction_status'] != 'Keranjang') {
+                                                       <?php if ($row['transaction_status'] == 'Lunas') {
                                                         ?>
-                                                           <a class="dropdown-item" href="<?= BASEURL; ?>/transaction/detail/<?= $row['transaction_id']; ?>">Detail</a>
+                                                        <a class="dropdown-item" href="<?= BASEURL; ?>/transaction/receipt/<?= $row['transaction_id']; ?>">Cetak</a>
                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                           <a class="dropdown-item" href="<?= BASEURL; ?>/transaction/delete/<?= $row['transaction_id']; ?>" onclick="return confirm('yakin data <?= $row['transaction_invoice_code']; ?> akan dihapus?')">hapus</a>
-                                                       <?php
+                                                        }  ?>
 
-                                                        } ?>
-
-
-                                                       <!-- <a class="dropdown-item edituser" href="<?= BASEURL; ?>/user/edit/<?= $row['user_id']; ?>" data-toggle="modal" data-target="#formModal" data-id="<?= $row['user_id']; ?>">ubah</a> -->
+                                                       <a class="dropdown-item" href="<?= BASEURL; ?>/transaction/detail/<?= $row['transaction_id']; ?>">Detail</a>
+                                                     
 
                                                    </div>
                                                </div>
@@ -172,8 +167,8 @@
                        <div class="modal-body" style="padding-right: 10%; padding-left: 10%;">
 
                            <form id="form" class="needs-validation" novalidate method="post" action="<?= BASEURL; ?>/transaction/create">
-                           <span id="page" style="display: none;">transaction</span>
-                                <div class="row">
+                               <span id="page" style="display: none;">transaction</span>
+                               <div class="row">
                                    <h1>Buat Pesanan</h1>
                                    <div class="col" style="border: solid; border-radius: 10px;">
 
@@ -207,12 +202,12 @@
                                                </div>
 
                                                <div class="form-group">
-                                                    <label for="transaction_customer_address">Alamat</label>
-                                                    <textarea type="text" class="form-control" id="transaction_customer_address" name="transaction_customer_address" required></textarea>
-                                                    <div class="invalid-feedback">
-                                                        Alamat wajib diisi boleh '-' jika tidak ada
-                                                    </div>
-                                                </div>
+                                                   <label for="transaction_customer_address">Alamat</label>
+                                                   <textarea type="text" class="form-control" id="transaction_customer_address" name="transaction_customer_address" required></textarea>
+                                                   <div class="invalid-feedback">
+                                                       Alamat wajib diisi boleh '-' jika tidak ada
+                                                   </div>
+                                               </div>
 
 
 
