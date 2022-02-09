@@ -15,7 +15,7 @@ class Transaction_model{
 
     public function getAllRow()
     {
-        $this->db->query('SELECT * FROM ' . $this->view_p . ' WHERE transaction_status != "Keranjang"');
+        $this->db->query('SELECT * FROM ' . $this->view_p . ' WHERE transaction_status != "Keranjang" ORDER BY transaction_date DESC');
         return $this->db->resultSet();
     }
    

@@ -14,6 +14,6 @@
          
   
           // Output the generated PDF to Browser
-          $kata = 'adfsdf';
+         
           $dompdf->stream($data['title']);
   

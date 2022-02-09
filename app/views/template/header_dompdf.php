@@ -6,7 +6,7 @@ ob_start();
         <html lang="en">
         <head>
         <meta charset="UTF-8">
-        <title><?= TITLE; ?></title>
+        <title><?= $data['title']; ?></title>
         
         <style type="text/css">
             <?php 

@@ -75,12 +75,13 @@ class Transaction extends Controller{
 
                 ];
                 if($this->model('Transaction_model')->postUpdateRowByStatus($data)){
+                   
                     echo '<script>history.back()</script>';
-                    $this->view('transaction/proof');
-                  
 
                 }
-
+             break;
+             case 'Lunas':
+                $this->receipt($id);   
                
            
         }
@@ -123,6 +124,15 @@ class Transaction extends Controller{
              
                 $this->model('Transaction_model')->postUpdateRowByStatus($data);
                 echo '<script>history.back()</script>';
+            case 'Lunas':
+                $data = [
+                    'transaction_status' => 'Sedang Proses',
+                    'transaction_id' => $x['transaction_id'],
+                        
+                ];
+                $this->model('Transaction_model')->postUpdateRowByStatus($data);
+                echo '<script>history.back()</script>';
+               
            
         }
         
@@ -131,34 +141,7 @@ class Transaction extends Controller{
        
     }
 
-    // public function getinvoice(){
-    //     $x = $this->model('Transaction_model')->getLastRow();
-           
-    //     if(empty($x['code'])){
-    //         $order = 1;
-    //         // var_dump($order);
-           
-    //     }else{
-    //         $number = substr($x['code'],strpos($x['code'],'INV'));
-    //         $order = substr($number, 5,7);
-    //         $order++; 
-    //     }
-    //     $code = 'CAFE17PWT/'.date('Ymd').'/INV';
-    //     $new_inv = $code.sprintf("%03s", $order);
-    //     echo json_encode($new_inv); 
-    // }
 
-
-    // public function getdatabyinvoice(){
-
-    //     if(empty($this->model('Transaction_method')->getRowByInvoice($_POST['transaction_invoice_code']))){
-    //         echo json_encode('available');
-    //     }else{
-    //         echo json_encode('unavailable');
-    //     }
-
-
-    // }
 
     public function create(){
         $x = $this->model('Transaction_model')->getLastRow();
@@ -223,7 +206,7 @@ class Transaction extends Controller{
         'row' => $data['row'],
         'rowId' => $data['rowId'],
         'paper' => 'A8',
-        'title' => 'Struk_'.$data['rowId']['transaction_invoice_code']
+        'title' => str_replace('/', '_', $data['rowId']['transaction_invoice_code'])
     ];
 
     header('Location: ' . BASEURL . '/transaction/receipt_print');
@@ -237,6 +220,7 @@ class Transaction extends Controller{
         $this->view('template/header_dompdf', $data);
         $this->view('transaction/receipt', $data);
         $this->view('template/footer_dompdf', $data); 
+       
     }
 
     

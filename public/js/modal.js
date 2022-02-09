@@ -226,6 +226,13 @@ $('.confirm').on('click',function(){
                     $('#btn').html('Lunas');
                     $('#image').css('display','block');
                     break;
+                case 'Lunas':
+                   
+                    $('#subtitle').html('Segera Cetak Struk Pesanan Pelanggan.');
+                    $('#btn').css('display','block');
+                    $('#btn').html('Cetak');
+                    $('#image').css('display','block');
+                    break;
                     
               
             }
@@ -266,12 +273,16 @@ $('.delete').on('click',function(){
                     break;
                 case 'Menunggu Pembayaran':
                  
-                    $('#subtitle').html('Status Pesanan akan diubah menjadi "Menunggu Konfirmasi".');
+                    $('#subtitle').html('Status Pesanan ini akan diubah menjadi "Menunggu Konfirmasi".');
                     $('#image').css('display','none');
                     break;
                 case 'Sedang Proses':
                    
-                    $('#subtitle').html('Status Pesanan akan diubah menjadi "Menunggu Pembayaran".');
+                    $('#subtitle').html('Status Pesanan ini akan diubah menjadi "Menunggu Pembayaran".');
+                    $('#image').css('display','none');
+                case 'Lunas':
+                   
+                    $('#subtitle').html('Status Pesanan ini akan diubah menjadi "Sedang Proses".');
                     $('#image').css('display','none');
               
             }

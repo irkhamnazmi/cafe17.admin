@@ -105,20 +105,22 @@
     </table>
 
     <table width="100%">
+     <?php
+            foreach($data['row'] AS $row):
+     ?>
         <tr>
-            <td><strong>Nasi Goreng </strong> </td>
+            <td><strong><?= $row['menu_name'];?> </strong> </td>
         </tr>
         <tr>
-            <?php
-            foreach($data['row'] AS $row):
-            ?>
-            <td><?= $row['menu_price'].' x '. $row['transaction_detail_qty'];?> </td>
+          
+            <td><?= 'Rp '.$row['menu_price'].',- x '. $row['transaction_detail_qty'];?> </td>
             <td colspan="3"></td>
-            <td align="right"><?= $row['transaction_detail_price_total']?></td>
-            <?php 
+            <td align="right"><?= 'Rp '.$row['transaction_detail_price_total'].',-'?></td>
+           
+        </tr>
+        <?php 
             endforeach;
             ?>
-        </tr>
         <tr>
             <td colspan="5">
                 <div style="border: none; border-top: 1px dashed #000;"></div>
@@ -134,7 +136,7 @@
         <tr>
             <td><strong>Total Bayar</strong> </td>
             <td colspan="3"></td>
-            <td align="right"><?= $data['rowId']['transaction_pay_total'];?></td>
+            <td align="right"><?= 'Rp '.$data['rowId']['transaction_pay_total'].',-';?></td>
         </tr>
         <!-- <tr>
             <td>Bayar</td>
