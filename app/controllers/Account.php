@@ -25,8 +25,10 @@ class Account extends Controller{
         $data = [
             'email' => trim($_POST['email']),
             'pass' => trim($_POST['pass']),
+            'captcha' => trim($_POST['validation']),
             'emailError' => '',
-            'passError' => ''
+            'passError' => '',
+            'captchaError' => ''
         ];
 
         if (empty($data['email'])) {
@@ -44,16 +46,22 @@ class Account extends Controller{
             exit;
         }
 
+        // validasi captcha
+        if (empty($data['captcha'])) {
+            $data['captchaError'] = "Captcha tidak sesuai";
+            Flasher::setFlash($data['captchaError'], 'login', 'danger');
+            header('Location: ' . BASEURL . '/account');
+            exit;
+        }
+        
+
         // cek jika error karena kosong 
-        if (empty($data['emailError']) && empty($data['passError'])) {
+        if (empty($data['emailError']) && empty($data['passError']) && empty($data['captchaError'])) {
             $loginUser = $this->model('Cashier_model')->getLogin($_POST);
             // var_dump($data['id']);
             if ($loginUser) {
                 $this->CreateSession($loginUser);
-                // Flasher::setFlash($loginUser['email'], 'login', 'success');
-               
-                
-                
+                // Flasher::setFlash($loginUser['email'], 'login', 'success'); 
                
             } else {
                 $data['passError'] = 'Email atau Sandi tidak valid';

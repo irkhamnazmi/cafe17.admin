@@ -77,10 +77,11 @@
                 </thead>
 
                 <tbody>
-                    <tr>
+                   
                         <?php
                         $no = 1;
                         foreach ($data['row'] as $row) : ?>
+                         <tr>
                             <td><?= $no; ?></td>
                             <td><?php $datetime = explode(' ', $row['user_date']);
                                 $date = explode('-', $datetime[0]);
@@ -126,10 +127,11 @@
                             <td align="left"><?= $row['user_name']; ?></td>
                             <td align="left"><?= $row['user_email']; ?></td>
                             <td align="left"><?= $row['user_address']; ?></td>
+                            </tr>
                         <?php
                             $no++;
                         endforeach; ?>
-                    </tr>
+                   
 
                 </tbody>
 
@@ -157,10 +159,11 @@
                 </thead>
 
                 <tbody>
-                    <tr>
+                   
                         <?php
                         $no = 1;
                         foreach ($data['row'] as $row) : ?>
+                         <tr>
                             <td><?= $no; ?></td>
                             <td><?php $datetime = explode(' ', $row['transaction_date']);
                                 $date = explode('-', $datetime[0]);
@@ -208,10 +211,11 @@
                             <td align="left"><?= $row['transaction_category']; ?></td>
                             <td align="left"><?= $row['transaction_method']; ?></td>
                             <td align="left"><?= $row['transaction_pay_total']; ?></td>
+                            </tr>
                         <?php
                             $no++;
                         endforeach; ?>
-                    </tr>
+                   
 
                 </tbody>
 
