@@ -47,12 +47,11 @@
                         <div class="card" style="color: black; border: none;">
                             <div class="card-body">
 
-                                <button class="btn btn-success"><span class="iconify" data-inline="false" data-icon="bi:whatsapp" style="color: #ffffff; font-size: 24px;" onclick="whatsapp('<?= $data['rowId']['transaction_id']; ?>')"></span>
-                                    Kontak</button>
+                                <a target="_blank" href="https://wa.me/62<?= substr($data['rowId']['user_phone_number'],1); ?>" onclick="window.open(this.href,'name','width= 600,height=400'); return false;"><button class="btn btn-success"><span class="iconify" data-inline="false" data-icon="bi:whatsapp" style="color: #ffffff; font-size: 24px;"></span>
+                                    Kontak</button> </a>
                                 <button class="btn btn-danger delete" data-id="<?= $data['rowId']['transaction_id']; ?>" data-toggle="modal" data-target="#formModal"><span class="iconify" data-inline="false" data-icon="ic:outline-cancel" style="color: #ffffff; font-size: 24px;"></span>
                                     Batal</button>
                                 <button class="btn btn-primary confirm" data-toggle="modal" data-target="#formModal" data-id="<?= $data['rowId']['transaction_id']; ?>"><span class="iconify" data-inline="false" data-icon="akar-icons:circle-check" style="font-size: 24px;"></span> Proses</button>
-
                             </div>
                         </div>
 

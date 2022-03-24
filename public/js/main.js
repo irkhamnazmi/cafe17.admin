@@ -47,26 +47,27 @@ function myFunction() {
   }
 }
 
-function whatsapp($id){
+// function sendWhatsapp(id){
+//   console.log(id);
 
-  $.ajax({
-    url: baseurl + '/transaction/contact',
-    data: {
-      transaction_id: $id
+//   $.ajax({
+//     url: baseurl + '/transaction/contact',
+//     data: {
+//       transaction_id: $id
      
-    },
-    method: 'POST',
-    dataType: 'json',
-    success: function (data) {
+//     },
+//     method: 'POST',
+//     dataType: 'json',
+//     success: function (data) {
 
 
-      window.location.href = 'https://wa.me/'+data.user_phone_number+'/';
+//       window.location.href = 'https://wa.me/'+data.user_phone_number+'/';
 
       
-    }
-  });
+//     }
+//   });
 
-}
+// }
 
 
 
